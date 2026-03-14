@@ -1,0 +1,28 @@
+# --- Python (Django/Flask) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+# Não suba o banco de dados local (SQLite) se for usá-lo para testes
+*.sqlite3
+
+# --- JavaScript / Node ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnp*
+
+# --- IDEs e Sistema ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Logs e Temporários ---
+*.log
+temp/
+tmp/

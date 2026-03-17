@@ -17,9 +17,10 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 ### added
 
+- add file 'ideas/' in 'docs/'
 - add 'manchester_protocol'(research 002) in 'research/'
 - add 'main.py', 'hospital.py', 'nurse.py' & 'patient.py' in folder '/simulator'
-- add file '/decisions' in '/docs'
+- add file 'decisions/' in 'docs/'
 - add goal and "authorship" section in *README*
 
 ### fixed

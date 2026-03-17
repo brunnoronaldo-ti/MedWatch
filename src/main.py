@@ -34,3 +34,8 @@ def main():
 
     # Print hospital status
     print(med_watch)
+
+if __name__ == "__main__":
+    main()
+
+    

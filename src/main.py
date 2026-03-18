@@ -1,20 +1,20 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-03-15
+# @last updated: 2026-03-18
 # @version: 0.1.0
 
 import random
 from simulator.patient import Patient, Condition
-from simulator.hospital import hospital
-from simulator.nurse import nurse
+from simulator.hospital import Hospital
+from simulator.nurse import Nurse
 
 def main():
     # Create hospital
-    med_watch = hospital("MedWatch", capacity=100)
+    med_watch = Hospital("MedWatch", capacity=100)
 
     # Create nurses
-    nurse1 = nurse(1, "Alice", 5)
-    nurse2 = nurse(2, "Bob", 10)
+    nurse1 = Nurse(1, "Alice", 5)
+    nurse2 = Nurse(2, "Bob", 10)
     med_watch.assign_nurse(nurse1)
     med_watch.assign_nurse(nurse2)
 
@@ -34,6 +34,13 @@ def main():
 
     # Print hospital status
     print(med_watch)
+
+    while True:
+        print("\nCurrent Patients:")
+        med_watch.tick()
+
+
+        input("\nPress Enter to simulate next time step...")
 
 if __name__ == "__main__":
     main()

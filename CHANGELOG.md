@@ -13,7 +13,21 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 ---
 
-## [0.2.0-alpha.2] - (in progress)
+## [0.2.1] - (in progress)
+
+### added
+
+
+
+### fixed
+
+- update 'main.py'
+
+
+
+---
+
+## [0.2.0] - 2026-03-17
 
 ### added
 

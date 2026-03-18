@@ -3,7 +3,7 @@
 # @last updated: 2026-03-15
 # @version: 0.1.0
 
-class nurse:
+class Nurse:
 
     def __init__(self, nurse_id, name, experience_years):
         self.nurse_id = nurse_id

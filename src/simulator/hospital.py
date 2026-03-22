@@ -1,12 +1,13 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-03-15
+# @last updated: 2026-03-22
 # @version: 0.1.0
 
 import random
-from simulator import patient
-from simulator import nurse
-from simulator import doctor
+import time
+from simulator.patient import Patient, Condition
+from simulator.nurse import Nurse
+from simulator.doctor import Doctor
 
 
 class Hospital:
@@ -29,11 +30,11 @@ class Hospital:
         self.nurses.append(nurse)
 
     def assign_doctor(self, doctor):
-        self.doctors.append(doctor)
+        self.doctor.append(doctor)
 
     def __str__(self):
-        return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}"
-    
+        return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
+
     def tick(self):
         print("\nSimulação rodando...")
 

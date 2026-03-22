@@ -7,6 +7,7 @@ import random
 from simulator.patient import Patient, Condition
 from simulator.hospital import Hospital
 from simulator.nurse import Nurse
+from simulator.doctor import Doctor
 
 def main():
     # Create hospital
@@ -17,6 +18,12 @@ def main():
     nurse2 = Nurse(2, "Bob", 10)
     med_watch.assign_nurse(nurse1)
     med_watch.assign_nurse(nurse2)
+
+    # Create doctors
+    doctor1 = Doctor(1, "Dr. John", "Cardiology", "11 123456789")
+    doctor2 = Doctor(2, "Dr. Jane", "Neurology", "11 987654321")
+    med_watch.assign_doctor(doctor1)
+    med_watch.assign_doctor(doctor2)
 
     # Create patients with conditions
     condition1 = Condition("Flu", severity=2, base_recovery_time=7, contagious=True, symptoms=["fever", "cough"])

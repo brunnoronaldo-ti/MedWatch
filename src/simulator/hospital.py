@@ -6,6 +6,7 @@
 import random
 from simulator import patient
 from simulator import nurse
+from simulator import doctor
 
 
 class Hospital:
@@ -26,6 +27,9 @@ class Hospital:
 
     def assign_nurse(self, nurse):
         self.nurses.append(nurse)
+
+    def assign_doctor(self, doctor):
+        self.doctors.append(doctor)
 
     def __str__(self):
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}"

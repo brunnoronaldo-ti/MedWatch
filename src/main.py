@@ -3,9 +3,9 @@
 # @last updated: 2026-03-22
 # @version: 0.1.0
 
-import random
+import time
 from simulator.patient import Patient, Condition
-from simulator.hospital import Hospital
+from simulator.hospital import Hospital, Simulation_time
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor
 
@@ -43,11 +43,17 @@ def main():
     print(med_watch)
 
     while True:
+
+        time.sleep(1)  # Simulate time passing
+        
         print("\nCurrent Patients:")
         med_watch.tick()
 
+        time.sleep(1)  # Simulate time passing
 
         input("\nPress Enter to simulate next time step...")
+        print("\n" + "-"*50)
+        Simulation_time.next_day()
 
 if __name__ == "__main__":
     main()

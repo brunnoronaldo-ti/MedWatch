@@ -17,13 +17,13 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 ### added
 
-
+- add time simulator in 'main.py'
+- add class 'simulation_time' in 'hospital.py'
 
 ### fixed
 
 - update 'main.py'
-
-
+- fixed bugs in 'hospital.py'
 
 ---
 

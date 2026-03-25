@@ -5,6 +5,7 @@
 
 import random
 import time
+from datetime import datetime, timedelta
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor
@@ -60,4 +61,14 @@ class Hospital:
         for patient in to_remove:
             self.discharge_patient(patient.patient_id)
 
-                                  
+class Simulation_time:
+    # Atributo de classe (compartilhado)
+    simulated_data = datetime(2023, 1, 1) 
+
+    @staticmethod
+    def next_day():
+        # Acessamos o atributo via NomeDaClasse.variavel
+        print(f"\n📅 Data Atual: {Simulation_time.simulated_data.strftime('%m/%d/%Y (%A)')}")
+        
+        # Incrementa o dia
+        Simulation_time.simulated_data += timedelta(days=1)

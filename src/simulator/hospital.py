@@ -4,7 +4,6 @@
 # @version: 0.1.0
 
 import random
-import time
 from datetime import datetime, timedelta
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
@@ -38,7 +37,7 @@ class Hospital:
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
 
     def tick(self):
-        print("\nSimulação rodando...")
+        print("\nSimulation running...")
 
         to_remove = []
 

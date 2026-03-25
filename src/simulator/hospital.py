@@ -16,6 +16,7 @@ class Hospital:
         self.capacity = capacity
         self.patients = []
         self.nurses = []
+        self.doctors = []
 
     def admit_patient(self, patient):
         if len(self.patients) < self.capacity:
@@ -30,7 +31,7 @@ class Hospital:
         self.nurses.append(nurse)
 
     def assign_doctor(self, doctor):
-        self.doctor.append(doctor)
+        self.doctors.append(doctor)
 
     def __str__(self):
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"

@@ -3,13 +3,23 @@
 # @last updated: 2026-03-24
 # @version: 0.1.0
 
+# bin/python3
+# basic bibliotecas
 import time
+import colorama
+from colorama import Fore, Back, Style, init
+#--------------------------------------------
+
+# import class from other files
 from simulator.patient import Patient, Condition
 from simulator.hospital import Hospital, Simulation_time
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor
+#---------------------------------------------
 
-def main():
+first_time = 0
+
+def main(first_time=0):
     # Create hospital
     med_watch = Hospital("MedWatch", capacity=100)
 
@@ -43,6 +53,16 @@ def main():
     print(med_watch)
 
     while True:
+
+        if first_time == 0:
+            print("welcome to MedWatch - Hospital Simulation")
+            print("This simulation models a hospital environment with patients, nurses, and doctors.")
+            print("You can observe how patients recover over time and interact with medical staff.")
+            print("this simulation is designed for educational purposes and is not a real medical tool.")
+           
+            first_time = 1
+        else:
+            print(f"Day {Simulation_time.current_day} - Simulation running...")
 
         time.sleep(1)  # Simulate time passing
         

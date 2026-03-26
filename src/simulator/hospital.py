@@ -37,7 +37,6 @@ class Hospital:
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
 
     def tick(self):
-        print("\nSimulation running...")
 
         to_remove = []
 

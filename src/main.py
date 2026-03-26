@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-03-24
+# @last updated: 2026-03-25
 # @version: 0.1.0
 
 # bin/python3
@@ -20,6 +20,8 @@ from simulator.doctor import Doctor
 first_time = 0
 
 def main(first_time=0):
+    init(autoreset=True)
+
     # Create hospital
     med_watch = Hospital("MedWatch", capacity=100)
 
@@ -55,18 +57,18 @@ def main(first_time=0):
     while True:
 
         if first_time == 0:
-            print("welcome to MedWatch - Hospital Simulation")
-            print("This simulation models a hospital environment with patients, nurses, and doctors.")
-            print("You can observe how patients recover over time and interact with medical staff.")
-            print("this simulation is designed for educational purposes and is not a real medical tool.")
-           
+            print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}this simulation is designed for educational purposes and is not a real medical tool.{Style.RESET_ALL}")
+
             first_time = 1
         else:
-            print(f"Day {Simulation_time.current_day} - Simulation running...")
+            print(f"{Fore.YELLOW}Day {Simulation_time.current_day} - Simulation running...{Style.RESET_ALL}")
 
         time.sleep(1)  # Simulate time passing
-        
-        print("\nCurrent Patients:")
+
+        print(f"{Fore.GREEN}\nCurrent Patients:{Style.RESET_ALL}")
         med_watch.tick()
 
         time.sleep(1)  # Simulate time passing

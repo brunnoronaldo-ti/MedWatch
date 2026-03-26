@@ -13,6 +13,10 @@ class Nurse:
     def __str__(self):
         return f"Nurse {self.nurse_id} - {self.name} ({self.experience_years} years experience)"
     
-    def care_for_patient(self, patient):
-        print(f"{self} is caring for {patient}")
-    
+class care_plan:
+    def __init__(self, patient, condition, assigned_nurse, assigned_doctor, treatments=None):
+        self.patient = patient
+        self.condition = condition
+        self.assigned_nurse = assigned_nurse
+        self.assigned_doctor = assigned_doctor
+        self.treatments = treatments or []

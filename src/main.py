@@ -64,7 +64,7 @@ def main(first_time=0):
 
             first_time = 1
         else:
-            print(f"{Fore.YELLOW}Day {Simulation_time.current_day} - Simulation running...{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Day {Simulation_time.simulated_data} - Simulation running...{Style.RESET_ALL}")
 
         time.sleep(1)  # Simulate time passing
 

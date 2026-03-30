@@ -1,22 +1,29 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-03-25
+# @last updated: 2026-03-30
 # @version: 0.1.0
 
-class Nurse:
+from dataclasses import dataclass, field
+from typing import List
 
-    def __init__(self, nurse_id, name, experience_years):
-        self.nurse_id = nurse_id
-        self.name = name
-        self.experience_years = experience_years
+@dataclass
+class Nurse:
+    nurse_id: int
+    name: str
+    experience_years: int
 
     def __str__(self):
-        return f"Nurse {self.nurse_id} - {self.name} ({self.experience_years} years experience)"
-    
-class care_plan:
-    def __init__(self, patient, condition, assigned_nurse, assigned_doctor, treatments=None):
-        self.patient = patient
-        self.condition = condition
-        self.assigned_nurse = assigned_nurse
-        self.assigned_doctor = assigned_doctor
-        self.treatments = treatments or []
+        return f"nurse {self.nurse_id} - {self.name} - {self.experience_years} years of experience"
+       
+@dataclass
+class Care_Plan:
+    patient: object
+    condition: object
+    assigned_nurse: Nurse
+    assigned_doctor: object
+    treatments: List[str] = field(default_factory=list)
+
+    def add_treatment(self, treatment: str):
+        self.treatments.append(treatment)
+
+   

@@ -4,32 +4,22 @@
 # @version: 0.1.0
 
 class Doctor:
-    def __init__(self, doctor_id, name, work_sector, contact):
+    def __init__(self, name, specialty, doctor_id, experience_years, capacity):
         self.name = name
-        self.work_sector = work_sector
-        self.contact = contact
+        self.specialty = specialty
         self.doctor_id = doctor_id
+        self.experience_years = experience_years
+        self.capacity = capacity
 
-    def get_doctor(self):
-        return self.doctor_id, self.name, self.work_sector, self.contact
+    def admit_doctor(self, doctor):
+        if len(self.doctors) < self.capacity:
+            self.doctors.append(doctor)
+            return True
+        return False
     
-    def update_contact(self, new_contact):
-        self.contact = new_contact
-
-    def update_work_sector(self, new_sector):
-        self.work_sector = new_sector
-
-    def update_name(self, new_name):
-        self.name = new_name
-
-    def update_doctor_id(self, new_id):
-        self.doctor_id = new_id
-
-    def add_doctor(self, doctor_id, name, work_sector, contact):
-        self.doctor_id = doctor_id
-        self.name = name
-        self.work_sector = work_sector
-        self.contact = contact
-
+    def discharge_doctor(self, doctor_id):
+        self.doctors = [d for d in self.doctors if d.doctor_id != doctor_id]
+    
     def __str__(self):
-        return f"doctor {self.doctor_id} - {self.name} - {self.work_sector} - {self.contact}"
+        return f"Doctor {self.doctor_id} - {self.name} - Specialty: {self.specialty} - {self.experience_years} years of experience"
+    

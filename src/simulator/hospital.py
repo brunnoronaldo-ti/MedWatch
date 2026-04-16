@@ -61,7 +61,7 @@ class Hospital:
 
 class Simulation_time:
     # Atributo de classe (compartilhado)
-    simulated_data = datetime(2023, 1, 1) 
+    simulated_data = datetime(2026, 1, 1) 
 
     @staticmethod
     def next_day():

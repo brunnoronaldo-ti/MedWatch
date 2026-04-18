@@ -4,12 +4,11 @@
 # @version: 0.1.0
 
 class Doctor:
-    def __init__(self, name, specialty, doctor_id, experience_years, capacity):
+    def __init__(self, name, specialty, doctor_id, experience_years):
         self.name = name
         self.specialty = specialty
         self.doctor_id = doctor_id
         self.experience_years = experience_years
-        self.capacity = capacity
 
     def admit_doctor(self, doctor):
         if len(self.doctors) < self.capacity:

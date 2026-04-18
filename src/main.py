@@ -12,7 +12,7 @@ from colorama import Fore, Back, Style, init
 
 # import class from other files
 from simulator.patient import Patient, Condition
-from simulator.hospital import Hospital, Simulation_time
+from simulator.hospital import Hospital_config, Simulation_time
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor
 #---------------------------------------------
@@ -23,7 +23,7 @@ def main(first_time=0):
     init(autoreset=True)
 
     # Create hospital
-    med_watch = Hospital("MedWatch", capacity=100)
+    med_watch = Hospital_config("MedWatch", capacity=10)
 
     # Create nurses
     nurse1 = Nurse(1, "Alice", 5)
@@ -79,5 +79,3 @@ def main(first_time=0):
 
 if __name__ == "__main__":
     main()
-
-    

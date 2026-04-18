@@ -9,8 +9,8 @@ from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor
 
-
-class Hospital:
+#this class hold all config
+class Hospital_config:
     def __init__(self, name, capacity):
         self.name = name
         self.capacity = capacity
@@ -37,7 +37,7 @@ class Hospital:
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
 
     def tick(self):
-
+        
         to_remove = []
 
         for patient in self.patients:

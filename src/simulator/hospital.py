@@ -7,7 +7,7 @@ import random
 from datetime import datetime, timedelta
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
-from simulator.doctor import Doctor
+from simulator.doctor import Doctor, Doctor_config
 
 #this class hold all config
 class Hospital_config:

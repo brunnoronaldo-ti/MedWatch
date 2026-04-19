@@ -14,7 +14,7 @@ from colorama import Fore, Back, Style, init
 from simulator.patient import Patient, Condition
 from simulator.hospital import Hospital_config, Simulation_time
 from simulator.nurse import Nurse
-from simulator.doctor import Doctor
+from simulator.doctor import Doctor_config, Doctor
 #---------------------------------------------
 
 first_time = 0
@@ -32,8 +32,8 @@ def main(first_time=0):
     med_watch.assign_nurse(nurse2)
 
     # Create doctors
-    doctor1 = Doctor(1, "Dr. John", "Cardiology", "11 123456789")
-    doctor2 = Doctor(2, "Dr. Jane", "Neurology", "11 987654321")
+    doctor1 = Doctor_config(1, "Dr. John", "Cardiology", "11 123456789")
+    doctor2 = Doctor_config(2, "Dr. Jane", "Neurology", "11 987654321")
     med_watch.assign_doctor(doctor1)
     med_watch.assign_doctor(doctor2)
 

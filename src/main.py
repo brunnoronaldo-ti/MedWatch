@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-04-19
+# @last updated: 2026-04-21
 # @version: 0.1.0
 
 # bin/python3
@@ -12,7 +12,7 @@ from colorama import Fore, Back, Style, init
 
 # import class from other files
 from simulator.patient import Patient, Condition
-from simulator.hospital import Hospital_config, Simulation_time
+from simulator.hospital import Hospital_config, Hospital, Simulation_time
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor_config, Doctor
 #---------------------------------------------
@@ -23,8 +23,8 @@ def main(first_time=0):
     init(autoreset=True)
 
     # Create hospital
-    med_watch = Hospital_config("MedWatch", capacity=10)
-
+    med_watch = Hospital("MedWatch", capacity=10)
+    
     # Create nurses
     nurse1 = Nurse(1, "Alice", 5)
     nurse2 = Nurse(2, "Bob", 10)

@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-04-19
+# @last updated: 2026-04-21
 # @version: 0.1.0
 
 import random
@@ -36,6 +36,11 @@ class Hospital_config:
     def __str__(self):
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
 
+
+class Hospital:
+    def __init__(self, config: Hospital_config):
+        self.config = config
+
     def tick(self):
         
         to_remove = []
@@ -44,7 +49,7 @@ class Hospital_config:
             print(f"\n{patient}")
 
             for condition in patient.conditions[:]:
-                recovery_chance = random.random()
+                recovery_chance = random.random() #lucky number between 0 and 1
 
                 if recovery_chance < (0.1 / condition.severity):
                     print(f"  Recovered from {condition.name}")

@@ -45,7 +45,7 @@ class Hospital:
         
         to_remove = []
 
-        for patient in self.patients:
+        for patient in self.config.patients:
             print(f"\n{patient}")
 
             for condition in patient.conditions[:]:
@@ -62,7 +62,7 @@ class Hospital:
                 to_remove.append(patient)
 
         for patient in to_remove:
-            self.discharge_patient(patient.patient_id)
+            self.config.discharge_patient(patient.patient_id)
 
 class Simulation_time:
     # Atributo de classe (compartilhado)

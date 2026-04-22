@@ -23,13 +23,14 @@ def main(first_time=0):
     init(autoreset=True)
 
     # Create hospital
-    med_watch = Hospital("MedWatch", capacity=10)
+    config = Hospital_config("MedWatch", capacity=10)
+    med_watch = Hospital(config)
     
     # Create nurses
     nurse1 = Nurse(1, "Alice", 5)
     nurse2 = Nurse(2, "Bob", 10)
-    med_watch.assign_nurse(nurse1)
-    med_watch.assign_nurse(nurse2)
+    med_watch.config.assign_nurse(nurse1)
+    med_watch.config.assign_nurse(nurse2)
 
     # Create doctors
     doctor1_config = Doctor_config(1, "Dr. John", "Cardiology", "11 123456789")
@@ -37,8 +38,8 @@ def main(first_time=0):
     doctor2_config = Doctor_config(2, "Dr. Jane", "Neurology", "11 987654321")
     doctor2 = Doctor(doctor2_config)
     
-    med_watch.assign_doctor(doctor1)
-    med_watch.assign_doctor(doctor2)
+    med_watch.config.assign_doctor(doctor1)
+    med_watch.config.assign_doctor(doctor2)
 
     # Create patients with conditions
     condition1 = Condition("Flu", severity=2, base_recovery_time=7, contagious=True, symptoms=["fever", "cough"])
@@ -51,11 +52,11 @@ def main(first_time=0):
     patient2.add_condition(condition2)
 
     # Admit patients to hospital
-    med_watch.admit_patient(patient1)
-    med_watch.admit_patient(patient2)
+    med_watch.config.admit_patient(patient1)
+    med_watch.config.admit_patient(patient2)
 
     # Print hospital status
-    print(med_watch)
+    print(med_watch.config)
 
     while True:
 

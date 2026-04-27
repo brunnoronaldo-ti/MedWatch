@@ -15,7 +15,7 @@ The project aims to create an automation solution for [briefly describe the prob
 
 ## decision:
 
-The programming language chosen for the development of this project is Python.
+The programming language chosen for the development of this project is **Python**.
 
 The decision is based on the maturity of the language's automation ecosystem and the productivity offered by its high-level syntax. Compared to C#, Python dispenses with the verbosity of complex environment configurations; and compared to JavaScript, it offers more robust and "straight to the point" libraries for data and file system manipulation, without the added complexity of the asynchronous model (Event Loop) when this is not the central requirement.
 

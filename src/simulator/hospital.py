@@ -4,6 +4,9 @@
 # @version: 0.1.0
 
 import random
+import queue
+import heapq
+import itertools
 from datetime import datetime, timedelta
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
@@ -17,6 +20,7 @@ class Hospital_config:
         self.patients = []
         self.nurses = []
         self.doctors = []
+        self._counter = itertools.count()  # Contador para desempate em heapq
 
     def admit_patient(self, patient):
         if len(self.patients) < self.capacity:
@@ -36,33 +40,66 @@ class Hospital_config:
     def __str__(self):
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
 
-
 class Hospital:
     def __init__(self, config: Hospital_config):
         self.config = config
 
-    def tick(self):
-        
-        to_remove = []
+    def __lt__(self, other):
+        return False  # Ou define uma lógica secundária de desempate no futuro
 
+    def priority_queue(self):
+        queue = []
         for patient in self.config.patients:
-            print(f"\n{patient}")
+            most_severe = patient.get_most_severe_condition()
+            if most_severe:
+                heapq.heappush(queue, (-most_severe.severity, next(self.config._counter),patient))
+        return queue
+
+    def tick(self):
+        queue = self.priority_queue()
+    
+        while queue:
+            _, patient = heapq.heappop(queue)
 
             for condition in patient.conditions[:]:
-                recovery_chance = random.random() #lucky number between 0 and 1
+                recovery_chance = random.random()
 
                 if recovery_chance < (0.1 / condition.severity):
-                    print(f"  Recovered from {condition.name}")
                     patient.conditions.remove(condition)
                 else:
-                    print(f"  Still has {condition.name}")
+                    # LÓGICA DE PIORA:
+                    # Aumenta a severidade em 0.2 a cada tick para condições não tratadas
+                    condition.severity += 0.2
+                    
+                    if condition.severity > 10:
+                        condition.severity = 10
+                        print(f"  {condition.name} reached CRITICAL state!")
 
             if not patient.conditions:
-                print(f"  Fully recovered → Discharged")
-                to_remove.append(patient)
+                self.config.discharge_patient(patient.patient_id)
+    
+    def deteriorate(self, patient):
+        """Gera uma chance de piora clínica ou morte para pacientes não atendidos."""
+        roll = random.random()
+        
+        # 2% de chance de morte
+        if roll < 0.02:
+            print(f"  CRITICAL: Patient {patient.patient_id} has passed away.")
+            self.config.remove_dead_patient(patient.patient_id)
+            return True # Paciente saiu do sistema
 
-        for patient in to_remove:
-            self.config.discharge_patient(patient.patient_id)
+        # 15% de chance de desenvolver uma nova condição (comorbidade)
+        elif roll < 0.17:
+            new_condition = self.generate_random_condition() # add no futuro, a=sem função no momento
+            patient.conditions.append(new_condition)
+            print(f"  Warning: Patient {patient.patient_id} developed {new_condition.name}!")
+        
+        # Piora as condições existentes
+        else:
+            for cond in patient.conditions:
+                cond.severity += 1.0 
+                
+        return False
 
 class Simulation_time:
     # Atributo de classe (compartilhado)

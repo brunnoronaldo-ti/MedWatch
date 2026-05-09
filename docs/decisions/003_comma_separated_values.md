@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # decision 3:
 
 ## Overview
@@ -18,3 +19,8 @@ id,name,age
 2,Bruno,35
 3,Carlos,22
 ```
+=======
+# decision 3: Comma Separated Values (CSV)
+
+## how is Comma Separated Values (CSV)?
+>>>>>>> dbb87744dddefc9941eb1f3fd15f201e445721ad

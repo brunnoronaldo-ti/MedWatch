@@ -19,3 +19,16 @@ id,name,age
 3,Carlos,22
 ```
 
+---
+
+## Advantages of using CSV in Python project
+
+Using CSV in Python is extremely common and advantageous, mainly due to its ease of manipulation and compatibility.
+
+- **Native Library (csv)**: Python comes with a built-in module called **csv** that allows you to read and write files without needing to install anything extra.
+
+- **Integration with Pandas**: For data analysis projects, the **Pandas** library allows loading huge **CSV** files with just one line of code `(pd.read_csv())`.
+
+- **Lightweight and High-Performance**: **CSV** files are simple text files, taking up less space and being faster to read/write than complex formats like `.xlsx`.
+
+- **Interoperability**: Facilitates data transfer between Python script and other tools (e.g., exporting reports to Excel or importing data from an SQL database).

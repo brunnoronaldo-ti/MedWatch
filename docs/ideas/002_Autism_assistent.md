@@ -14,6 +14,4 @@ this goal are create a AI assistent equal a normal assistent, but this new assis
 
 ## ⚠️ Attention
 
-Please, this file does not contain professional information.
-
-Recommended: you make your own research
+> Please, this file does not contain professional information. Recommended: you make your own research

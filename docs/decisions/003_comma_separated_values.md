@@ -32,3 +32,32 @@ Using CSV in Python is extremely common and advantageous, mainly due to its ease
 - **Lightweight and High-Performance**: **CSV** files are simple text files, taking up less space and being faster to read/write than complex formats like `.xlsx`.
 
 - **Interoperability**: Facilitates data transfer between Python script and other tools (e.g., exporting reports to Excel or importing data from an SQL database).
+
+---
+
+## How to manipulate CSV in Python
+
+> The information below is for informational purposes and for future reference. If the reader wishes to read it, please feel free.
+
+1. Reading a CSV file (using the native module):
+
+```python
+import csv
+
+with open('dados.csv', mode='r', encoding='utf-8') as file:
+    reader = csv.reader(file)
+    for line in reader:
+        print(line)
+```
+
+---
+
+2. Creating/Writing a **CSV** (using Pandas - Recommended for structured data):
+
+```python
+import pandas as pd
+
+data = {'Nome': ['Ana', 'Bruno'], 'Idade': [25, 30]}
+df = pd.DataFrame(data)
+df.to_csv('novo_dados.csv', index=False)
+```

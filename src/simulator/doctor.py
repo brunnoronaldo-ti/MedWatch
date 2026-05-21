@@ -47,6 +47,4 @@ class Doctor:
         self.working = True
         self.doctor_burnout()
         self.sucesses_rate = int(self.eficacy * 100)
-
-    #1. fazer a função do burnout
-    #2. dar propósito a eficácia de trabalho     
+  

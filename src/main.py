@@ -23,7 +23,7 @@ def main(first_time=0):
     init(autoreset=True)
 
     # Create hospital
-    config = Hospital_config("MedWatch", capacity=10)
+    config = Hospital_config("MedWatch", capacity=10, occupied_beds=0, ICU=0, Ward=0, Emergency=0)
     med_watch = Hospital(config)
     
     # Create nurses
@@ -33,9 +33,9 @@ def main(first_time=0):
     med_watch.config.assign_nurse(nurse2)
 
     # Create doctors
-    doctor1_config = Doctor_config(1, "Dr. John", "Cardiology", "11 123456789")
+    doctor1_config = Doctor_config("Dr. John", "Cardiology", 1, 10)
     doctor1 = Doctor(doctor1_config)
-    doctor2_config = Doctor_config(2, "Dr. Jane", "Neurology", "11 987654321")
+    doctor2_config = Doctor_config("Dr. Jane", "Neurology", 2, 8)
     doctor2 = Doctor(doctor2_config)
     
     med_watch.config.assign_doctor(doctor1)
@@ -83,3 +83,4 @@ def main(first_time=0):
 
 if __name__ == "__main__":
     main()
+

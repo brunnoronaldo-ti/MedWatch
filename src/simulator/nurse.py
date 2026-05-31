@@ -26,7 +26,7 @@ class Nurse:
 
        patients_attended_today = len(self.patients_attended_today)
        if patients_attended_today + 1:
-            self.stress_level += 1   
+            self.stress_level += 1  
             if self.stress_level >= 5:
                 self.error_chance += 0.01  # Aumenta a chance de erro em 1% a cada nível de estresse
     
@@ -41,5 +41,3 @@ class Care_Plan:
 
     def add_treatment(self, treatment: str):
         self.treatments.append(treatment)
-
-   

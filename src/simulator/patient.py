@@ -13,6 +13,7 @@ class Condition:
         self.contagious = contagious
         self.treatments = treatments or []
         self.symptoms = symptoms or []
+        self.treated = False
 
 
 class Patient:

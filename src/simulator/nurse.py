@@ -5,6 +5,7 @@
 
 from dataclasses import dataclass, field
 from typing import List
+from simulator import patient
 
 @dataclass
 class Nurse:
@@ -14,6 +15,9 @@ class Nurse:
 
     def __str__(self):
         return f"nurse {self.nurse_id} - {self.name} - {self.experience_years} years of experience"
+    
+    def triage_patient(self, patient):
+        patient.calculate_triage()
        
 @dataclass
 class Care_Plan:

@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
 # @last updated: 2026-04-22
-# @version: 0.1.0
+# @version: 0.4.1
 
 import random
 import queue
@@ -54,19 +54,18 @@ class Hospital:
             if most_severe:
                 heapq.heappush(queue, (-most_severe.severity, next(self.config._counter),patient))
         return queue
+    
 
     def tick(self):
         queue = self.priority_queue()
     
         while queue:
-            _, patient = heapq.heappop(queue)
+            _, _, patient = heapq.heappop(queue)
 
             for condition in patient.conditions[:]:
-                recovery_chance = random.random()
-
-                if recovery_chance < (0.1 / condition.severity):
-                    patient.conditions.remove(condition)
-                else:
+                    
+                if condition.treated == False:
+                    # Simula o tratamento (aqui você pode adicionar lógica de tratamento real)
                     # LÓGICA DE PIORA:
                     # Aumenta a severidade em 0.2 a cada tick para condições não tratadas
                     condition.severity += 0.2

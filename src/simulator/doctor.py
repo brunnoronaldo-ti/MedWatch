@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-22
 # @last updated: 2026-04-19
-# @version: 0.1.0
+# @version: 0.4.1
 
 import random
 
@@ -40,11 +40,19 @@ class Doctor:
             self.eficacy -= 0.05
 
         #limit
-        if self.eficacy < 0:
-            self.eficacy = 0
+        self.eficacy = max(0, self.eficacy)
 
     def work(self):
         self.working = True
         self.doctor_burnout()
         self.sucesses_rate = int(self.eficacy * 100)
   
+# Experiência médica não serve para nada
+# A experiência médica é apenas um número que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.
+# no futuro add um def que dá bonus de eficácia baseado na experiência, mas por enquanto é só um número decorativo.
+
+# Especialidade também não serve para nada
+# A especialidade do médico é apenas um título que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.
+# temos cardiologia, neurologia, ortopedia, pediatria, psiquiatria, dermatologia, ginecologia, urologia, oftalmologia, otorrinolaringologia, endocrinologia, gastroenterologia, 
+# nefrologia, reumatologia, hematologia, oncologia, imunologia, alergologia, infectologia, geriatria e medicina de emergência. No futuro podemos adicionar um bônus de eficácia para tratamentos relacionados à especialidade do médico.
+# além de add problemas que necessitem de uma especialidade específica, e o médico que tiver essa especialidade terá um bônus de eficácia no tratamento. Por exemplo, um paciente com um problema cardíaco terá um bônus de eficácia se for tratado por um cardiologista.

@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
 # @last updated: 2026-04-18
-# @version: 0.1.0
+# @version: 0.4.1
 
 class Condition:
 
@@ -32,7 +32,6 @@ class Patient:
 
         self.triage_level = None
 
-
     def add_condition(self, condition):
         self.conditions.append(condition)
 
@@ -40,6 +39,7 @@ class Patient:
         if not self.conditions:
             return None
         return max(self.conditions, key=lambda c: c.severity)
+    
 
     def __str__(self):
         return f"Patient {self.patient_id} - {self.name} ({self.age})"

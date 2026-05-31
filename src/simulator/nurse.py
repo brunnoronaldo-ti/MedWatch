@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
 # @last updated: 2026-03-30
-# @version: 0.1.0
+# @version: 0.4.1
 
 from dataclasses import dataclass, field
 from typing import List

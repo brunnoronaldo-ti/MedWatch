@@ -4,9 +4,11 @@
 # @version: 0.4.1
 
 import random
+from simulator import patient
+from simulator import nurse 
 
 class Doctor_config:
-    def __init__(self, name, specialty, doctor_id, experience_years):
+    def __init__(self, name,  specialty, doctor_id, experience_years):
         self.name = name
         self.specialty = specialty
         self.doctor_id = doctor_id
@@ -46,6 +48,15 @@ class Doctor:
         self.working = True
         self.doctor_burnout()
         self.sucesses_rate = int(self.eficacy * 100)
+
+    def treat_patient(self, patient):
+        success = random.random()
+
+        if success < self.eficacy:
+            patient.condition.severity -= 2
+        else:
+            patient.condition.severity += 1
+
   
 # Experiência médica não serve para nada
 # A experiência médica é apenas um número que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.

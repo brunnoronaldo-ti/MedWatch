@@ -14,9 +14,13 @@ from simulator.doctor import Doctor, Doctor_config
 
 #this class hold all config
 class Hospital_config:
-    def __init__(self, name, capacity):
+    def __init__(self, name, capacity, occupied_beds, ICU, Ward, Emergency):
         self.name = name
         self.capacity = capacity
+        self.occupied_beds = occupied_beds # add no futuro, a=sem função no momento/ camas ocupadas
+        self.ICU = ICU # add no futuro, a=sem função no momento/ camas de UTI
+        self.Ward = Ward # add no futuro, a=sem função no momento/ camas
+        self.Emergency = Emergency # add no futuro, a=sem função no momento/ camas de emergência
         self.patients = []
         self.nurses = []
         self.doctors = []

@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-22
-# @last updated: 2026-04-19
+# @last updated: 2026-05-31
 # @version: 0.4.1
 
 import random
@@ -49,8 +49,12 @@ class Doctor:
         self.doctor_burnout()
         self.sucesses_rate = int(self.eficacy * 100)
 
+    #
     def treat_patient(self, patient):
-        success = random.random()
+        success = random.random() #o sucesso é aleatório por enquanto, mas no futuro podemos adicionar um bônus de eficácia baseado na experiência do médico e na especialidade relacionada ao problema do paciente.
+
+        # calculate the sucesses based on the doctor atributes
+         
 
         if success < self.eficacy:
             patient.condition.severity -= 2

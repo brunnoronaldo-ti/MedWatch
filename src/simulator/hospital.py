@@ -111,7 +111,7 @@ class Simulation_time:
     @staticmethod
     def next_day():
         # Acessamos o atributo via NomeDaClasse.variavel
-        print(f"\n📅 Data Atual: {Simulation_time.simulated_data.strftime('%m/%d/%Y (%A)')}")
+        print(f"\n📅 current date: {Simulation_time.simulated_data.strftime('%m/%d/%Y (%A)')}")
         
-        # Incrementa o dia
+        # add day to simulated_data
         Simulation_time.simulated_data += timedelta(days=1)

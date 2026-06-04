@@ -51,7 +51,7 @@ class Doctor:
 
     #
     def treat_patient(self, patient):
-        success = random.random() #o sucesso é aleatório por enquanto, mas no futuro podemos adicionar um bônus de eficácia baseado na experiência do médico e na especialidade relacionada ao problema do paciente.
+        success = random.random() #the sucess of the treatment is based on the doctor's efficacy, but also has a random factor to simulate the unpredictability of medicine. The success variable will be a number between 0 and 1, and if it's less than the doctor's efficacy, the treatment is successful. Otherwise, it's not successful.
 
         # calculate the sucesses based on the doctor atributes
          

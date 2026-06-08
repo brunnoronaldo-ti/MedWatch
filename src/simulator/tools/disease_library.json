@@ -1,65 +1,67 @@
-{
-    "heart attack": {
-        "symptoms": ["chest pain", "shortness of breath", "nausea", "sweating"],
-        "treatments": ["aspirin", "nitroglycerin", "beta blockers", "angioplasty"],
-        "severity": 9,
-        "especiality": "cardiology",
-        "mortality_rate": 0.25,
-        "contagious": False,
-        "recovery_time": 30
-    },
-    "stroke": {
-        "symptoms": ["sudden numbness", "confusion", "trouble speaking", "loss of balance"],
-        "treatments": ["clot-busting drugs", "surgery", "rehabilitation"],
-        "severity": 8,
-        "especiality": "neurology",
-        "mortality_rate": 0.15,
-        "contagious": False,
-        "recovery_time": 60
-    },
-    "pneumonia": {
-        "symptoms": ["cough", "fever", "shortness of breath", "chest pain"],
-        "treatments": ["antibiotics", "rest", "fluids"],
-        "severity": 7,
-        "especiality": "pulmonology",
-        "mortality_rate": 0.05,
-        "contagious": True,
-        "recovery_time": 14
-    },
-    "diabetes": {
-        "symptoms": ["increased thirst", "frequent urination", "fatigue", "blurred vision"],
-        "treatments": ["insulin", "diet changes", "exercise"],
-        "severity": 6,
-        "especiality": "endocrinology",
-        "mortality_rate": 0.02,
-        "contagious": False,
-        "recovery_time": 0
-    },
-    "flu": {
-        "symptoms": ["fever", "cough", "sore throat", "body aches"],
-        "treatments": ["rest", "fluids", "antiviral drugs"],
-        "severity": 4,
-        "especiality": "infectious disease",
-        "mortality_rate": 0.01,
-        "contagious": True,
-        "recovery_time": 7
-    },
-    "covid-19": {
-        "symptoms": ["fever", "cough", "shortness of breath", "loss of taste or smell"],
-        "treatments": ["rest", "fluids", "antiviral drugs", "oxygen therapy"],
-        "severity": 7,
-        "especiality": "infectious disease",
-        "mortality_rate": 0.02,
-        "contagious": True,
-        "recovery_time": 14
-    },
-    "cancer": {
-        "symptoms": ["unexplained weight loss", "fatigue", "pain", "lumps"],
-        "treatments": ["surgery", "chemotherapy", "radiation therapy"],
-        "severity": 10,
-        "especiality": "oncology",
-        "mortality_rate": 0.5,
-        "contagious": False,
-        "recovery_time": 180
+{ 
+    "content": "disease_library": {       
+        "heart attack": {
+            "symptoms": ["chest pain", "shortness of breath", "nausea", "sweating"],
+            "treatments": ["aspirin", "nitroglycerin", "beta blockers", "angioplasty"],
+            "severity": 9,
+            "especiality": "cardiology",
+            "mortality_rate": 0.25,
+            "contagious": False,
+            "recovery_time": 30
+        },
+        "stroke": {
+            "symptoms": ["sudden numbness", "confusion", "trouble speaking", "loss of balance"],
+            "treatments": ["clot-busting drugs", "surgery", "rehabilitation"],
+            "severity": 8,
+            "especiality": "neurology",
+            "mortality_rate": 0.15,
+            "contagious": False,
+            "recovery_time": 60
+        },
+        "pneumonia": {
+            "symptoms": ["cough", "fever", "shortness of breath", "chest pain"],
+            "treatments": ["antibiotics", "rest", "fluids"],
+            "severity": 7,
+            "especiality": "pulmonology",
+            "mortality_rate": 0.05,
+            "contagious": True,
+            "recovery_time": 14
+        },
+        "diabetes": {
+            "symptoms": ["increased thirst", "frequent urination", "fatigue", "blurred vision"],
+            "treatments": ["insulin", "diet changes", "exercise"],
+            "severity": 6,
+            "especiality": "endocrinology",
+            "mortality_rate": 0.02,
+            "contagious": False,
+            "recovery_time": 0
+        },
+        "flu": {
+            "symptoms": ["fever", "cough", "sore throat", "body aches"],
+            "treatments": ["rest", "fluids", "antiviral drugs"],
+            "severity": 4,
+            "especiality": "infectious disease",
+            "mortality_rate": 0.01,
+            "contagious": True,
+            "recovery_time": 7
+        },
+        "covid-19": {
+            "symptoms": ["fever", "cough", "shortness of breath", "loss of taste or smell"],
+            "treatments": ["rest", "fluids", "antiviral drugs", "oxygen therapy"],
+            "severity": 7,
+            "especiality": "infectious disease",
+            "mortality_rate": 0.02,
+            "contagious": True,
+            "recovery_time": 14
+        },
+        "cancer": {
+            "symptoms": ["unexplained weight loss", "fatigue", "pain", "lumps"],
+            "treatments": ["surgery", "chemotherapy", "radiation therapy"],
+            "severity": 10,
+            "especiality": "oncology",
+            "mortality_rate": 0.5,
+            "contagious": False,
+            "recovery_time": 180
+        }
     }
 }

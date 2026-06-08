@@ -14,14 +14,12 @@ class Doctor_config:
         self.doctor_id = doctor_id
         self.experience_years = experience_years
         
-
     def __str__(self):
         return f"Doctor {self.doctor_id} - {self.name} - Specialty: {self.specialty} - {self.experience_years} years of experience"
     
 class Doctor:
     def __init__(self, config: Doctor_config, burnout_meditor=10, working=False, eficacy=1.0, sucesses_rate=100):
         self.config = config
-
         self.burnout_meditor = burnout_meditor
         self.working = working
         self.eficacy = eficacy
@@ -49,22 +47,37 @@ class Doctor:
         self.doctor_burnout()
         self.sucesses_rate = int(self.eficacy * 100)
 
-    #
+    def calculate_success_rate(self):
+        experience_bonus = (
+            self.config.experience_years ** 0.5
+        ) * 0.02 
+       
     def treat_patient(self, patient):
-        success = random.random() #the sucess of the treatment is based on the doctor's efficacy, but also has a random factor to simulate the unpredictability of medicine. The success variable will be a number between 0 and 1, and if it's less than the doctor's efficacy, the treatment is successful. Otherwise, it's not successful.
 
-        # calculate the sucesses based on the doctor atributes
-         
+        condition = patient.get_most_severe_condition()
+        condition.severity = max(
+            0,
+            condition.severity
+        )
+        if condition.severity == 0:
+            patient.conditions.remove(condition)
+            
+
+        if not condition:
+            return
+
+        success = random.random()
 
         if success < self.eficacy:
-            patient.condition.severity -= 2
-        else:
-            patient.condition.severity += 1
+            condition.severity -= 2
 
-  
+        else:
+            condition.severity += 1
+
 # Experiência médica não serve para nada
 # A experiência médica é apenas um número que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.
 # no futuro add um def que dá bonus de eficácia baseado na experiência, mas por enquanto é só um número decorativo.
+# calculate the sucesses based on the doctor experience
 
 # Especialidade também não serve para nada
 # A especialidade do médico é apenas um título que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.

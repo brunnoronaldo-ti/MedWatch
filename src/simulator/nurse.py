@@ -29,8 +29,7 @@ class Nurse:
             self.stress_level += 1  
             if self.stress_level >= 5:
                 self.error_chance += 0.01  # Aumenta a chance de erro em 1% a cada nível de estresse
-    
-       
+      
 @dataclass
 class Care_Plan:
     patient: object

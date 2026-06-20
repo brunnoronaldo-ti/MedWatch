@@ -45,7 +45,7 @@ class HospitalConfig:
         return f"Hospital {self.name} - Capacity: {self.capacity}, Patients: {len(self.patients)}, Nurses: {len(self.nurses)}, Doctors: {len(self.doctors)}"
 
 class Hospital:
-    def __init__(self, config: Hospital_config):
+    def __init__(self, config: HospitalConfig):
         self.config = config
 
     def __lt__(self, other):
@@ -104,7 +104,7 @@ class SimulationTime:
     @staticmethod
     def next_day():
         # Acessamos o atributo via NomeDaClasse.variavel
-        print(f"\n📅 current date: {Simulation_time.simulated_data.strftime('%m/%d/%Y (%A)')}")
+        print(f"\n📅 current date: {SimulationTime.simulated_data.strftime('%m/%d/%Y (%A)')}")
         
         # add day to simulated_data
-        Simulation_time.simulated_data += timedelta(days=1)
+        SimulationTime.simulated_data += timedelta(days=1)

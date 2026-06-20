@@ -44,6 +44,10 @@ class Patient:
     def calculate_triage(self):
         condition = self.get_most_severe_condition()
 
+        if not condition:
+            self.triage_level = "BLUE"
+            return
+
         if condition.severity >= 9:
             self.triage_level = "RED"
 

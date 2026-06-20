@@ -12,20 +12,18 @@ from colorama import Fore, Back, Style, init
 
 # import class from other files
 from simulator.patient import Patient, Condition
-from simulator.hospital import Hospital_config, Hospital, Simulation_time
+from simulator.hospital import HospitalConfig, Hospital, SimulationTime
 from simulator.nurse import Nurse
-from simulator.doctor import Doctor_config, Doctor
+from simulator.doctor import DoctorConfig, Doctor
 #---------------------------------------------
 
-first_time = 0
-
-def main(first_time=0):
+def main():
     init(autoreset=True)
 
     # Create hospital
-    config = Hospital_config("MedWatch", capacity=10, occupied_beds=0, ICU=0, Ward=0, Emergency=0)
+    config = HospitalConfig("MedWatch", capacity=10, occupied_beds=0, ICU=0, Ward=0, Emergency=0)
     med_watch = Hospital(config)
-    
+
     # Create nurses
     nurse1 = Nurse(1, "Alice", 5)
     nurse2 = Nurse(2, "Bob", 10)
@@ -33,21 +31,21 @@ def main(first_time=0):
     med_watch.config.assign_nurse(nurse2)
 
     # Create doctors
-    doctor1_config = Doctor_config("Dr. John", "Cardiology", 1, 10)
+    doctor1_config = DoctorConfig("Dr. John", "Cardiology", 1, 10)
     doctor1 = Doctor(doctor1_config)
-    doctor2_config = Doctor_config("Dr. Jane", "Neurology", 2, 8)
+    doctor2_config = DoctorConfig("Dr. Jane", "Neurology", 2, 8)
     doctor2 = Doctor(doctor2_config)
-    
+
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
     # Create patients with conditions
     condition1 = Condition("Flu", severity=2, base_recovery_time=7, contagious=True, symptoms=["fever", "cough"])
     condition2 = Condition("Fracture", severity=4, base_recovery_time=30, contagious=False, symptoms=["pain", "swelling"])
-    
+
     patient1 = Patient(1, "John Doe", 30)
     patient1.add_condition(condition1)
-    
+
     patient2 = Patient(2, "Jane Smith", 25)
     patient2.add_condition(condition2)
 
@@ -58,17 +56,18 @@ def main(first_time=0):
     # Print hospital status
     print(med_watch.config)
 
+    first_time = True
     while True:
 
-        if first_time == 0:
+        if first_time:
             print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
             print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
             print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
             print(f"{Fore.CYAN}this simulation is designed for educational purposes and is not a real medical tool.{Style.RESET_ALL}")
 
-            first_time = 1
+            first_time = False
         else:
-            print(f"{Fore.YELLOW}Day {Simulation_time.simulated_data} - Simulation running...{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Day {SimulationTime.simulated_data} - Simulation running...{Style.RESET_ALL}")
 
         time.sleep(1)  # Simulate time passing
 
@@ -79,7 +78,7 @@ def main(first_time=0):
 
         input("\nPress Enter to simulate next time step...")
         print("\n" + "-"*50)
-        Simulation_time.next_day()
+        SimulationTime.next_day()
 
 if __name__ == "__main__":
     main()

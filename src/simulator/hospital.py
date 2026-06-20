@@ -10,10 +10,10 @@ import itertools
 from datetime import datetime, timedelta
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
-from simulator.doctor import Doctor, Doctor_config
+from simulator.doctor import Doctor, DoctorConfig
 
 #this class hold all config
-class Hospital_config:
+class HospitalConfig:
     def __init__(self, name, capacity, occupied_beds, ICU, Ward, Emergency):
         self.name = name
         self.capacity = capacity
@@ -84,27 +84,20 @@ class Hospital:
     def deteriorate(self, patient):
         """Gera uma chance de piora clínica ou morte para pacientes não atendidos."""
         roll = random.random()
-        
+
         # 2% de chance de morte
         if roll < 0.02:
             print(f"  CRITICAL: Patient {patient.patient_id} has passed away.")
-            self.config.remove_dead_patient(patient.patient_id)
-            return True # Paciente saiu do sistema
+            self.config.discharge_patient(patient.patient_id)
+            return True
 
-        # 15% de chance de desenvolver uma nova condição (comorbidade)
-        elif roll < 0.17:
-            new_condition = self.generate_random_condition() # add no futuro, a=sem função no momento
-            patient.conditions.append(new_condition)
-            print(f"  Warning: Patient {patient.patient_id} developed {new_condition.name}!")
-        
         # Piora as condições existentes
-        else:
-            for cond in patient.conditions:
-                cond.severity += 1.0 
-                
+        for cond in patient.conditions:
+            cond.severity += 1.0
+
         return False
 
-class Simulation_time:
+class SimulationTime:
     # Atributo de classe (compartilhado)
     simulated_data = datetime(2026, 1, 1) 
 

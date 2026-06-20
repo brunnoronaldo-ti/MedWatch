@@ -7,7 +7,7 @@ import random
 from simulator import patient
 from simulator import nurse 
 
-class Doctor_config:
+class DoctorConfig:
     def __init__(self, name,  specialty, doctor_id, experience_years):
         self.name = name
         self.specialty = specialty
@@ -18,69 +18,54 @@ class Doctor_config:
         return f"Doctor {self.doctor_id} - {self.name} - Specialty: {self.specialty} - {self.experience_years} years of experience"
     
 class Doctor:
-    def __init__(self, config: Doctor_config, burnout_meditor=10, working=False, eficacy=1.0, sucesses_rate=100):
+    def __init__(self, config: Doctor_config, burnout_meter=10, working=False, efficacy=1.0):
         self.config = config
-        self.burnout_meditor = burnout_meditor
+        self.burnout_meter = burnout_meter
         self.working = working
-        self.eficacy = eficacy
-        self.sucesses_rate = int(self.eficacy * 100)
+        self.efficacy = efficacy
+        self.success_rate = int(self.efficacy * 100)
 
     def doctor_burnout(self):
-        #this function will decrease the eficacy of the doctor based on the burnout_meditor and the working hours
         if self.working:
-            self.burnout_meditor += 1
+            self.burnout_meter += 1
 
-            if self.burnout_meditor >= 10:
-                self.eficacy -= 0.1
-                self.burnout_meditor = 0
+            if self.burnout_meter >= 10:
+                self.efficacy -= 0.1
+                self.burnout_meter = 0
 
-        #aleatory burnout event
         personal_problems_chance = random.randint(1, 10)
         if personal_problems_chance == 1:
-            self.eficacy -= 0.05
+            self.efficacy -= 0.05
 
-        #limit
-        self.eficacy = max(0, self.eficacy)
+        self.efficacy = max(0, self.efficacy)
 
     def work(self):
         self.working = True
         self.doctor_burnout()
-        self.sucesses_rate = int(self.eficacy * 100)
+        self.success_rate = int(self.efficacy * 100)
 
     def calculate_success_rate(self):
         experience_bonus = (
             self.config.experience_years ** 0.5
-        ) * 0.02 
-       
+        ) * 0.02
+        self.success_rate = int((self.efficacy + experience_bonus) * 100)
+        return self.success_rate
+
     def treat_patient(self, patient):
 
         condition = patient.get_most_severe_condition()
-        condition.severity = max(
-            0,
-            condition.severity
-        )
+        if not condition:
+            return
+
+        condition.severity = max(0, condition.severity)
         if condition.severity == 0:
             patient.conditions.remove(condition)
-            
-
-        if not condition:
             return
 
         success = random.random()
 
-        if success < self.eficacy:
+        if success < self.efficacy:
             condition.severity -= 2
 
         else:
             condition.severity += 1
-
-# Experiência médica não serve para nada
-# A experiência médica é apenas um número que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.
-# no futuro add um def que dá bonus de eficácia baseado na experiência, mas por enquanto é só um número decorativo.
-# calculate the sucesses based on the doctor experience
-
-# Especialidade também não serve para nada
-# A especialidade do médico é apenas um título que não tem impacto real na eficácia do tratamento. O que realmente importa é a dedicação e o cuidado do médico com o paciente.
-# temos cardiologia, neurologia, ortopedia, pediatria, psiquiatria, dermatologia, ginecologia, urologia, oftalmologia, otorrinolaringologia, endocrinologia, gastroenterologia, 
-# nefrologia, reumatologia, hematologia, oncologia, imunologia, alergologia, infectologia, geriatria e medicina de emergência. No futuro podemos adicionar um bônus de eficácia para tratamentos relacionados à especialidade do médico.
-# além de add problemas que necessitem de uma especialidade específica, e o médico que tiver essa especialidade terá um bônus de eficácia no tratamento. Por exemplo, um paciente com um problema cardíaco terá um bônus de eficácia se for tratado por um cardiologista.

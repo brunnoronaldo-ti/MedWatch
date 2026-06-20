@@ -25,10 +25,10 @@ class Nurse:
     def Burnout_in_nurse(self):
 
        patients_attended_today = len(self.patients_attended_today)
-       if patients_attended_today + 1:
-            self.stress_level += 1  
+       if patients_attended_today >= 1:
+            self.stress_level += 1
             if self.stress_level >= 5:
-                self.error_chance += 0.01  # Aumenta a chance de erro em 1% a cada nível de estresse.
+                self.error_chance += 0.01
       
 @dataclass
 class Care_Plan:

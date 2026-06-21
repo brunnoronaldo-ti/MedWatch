@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-22
-# @last updated: 2026-05-31
-# @version: 0.4.1
+# @last updated: 2026-06-19
+# @version: 0.2.0
 
 import random
 from simulator import patient
@@ -18,7 +18,7 @@ class DoctorConfig:
         return f"Doctor {self.doctor_id} - {self.name} - Specialty: {self.specialty} - {self.experience_years} years of experience"
     
 class Doctor:
-    def __init__(self, config: Doctor_config, burnout_meter=10, working=False, efficacy=1.0):
+    def __init__(self, config: DoctorConfig, burnout_meter=10, working=False, efficacy=1.0):
         self.config = config
         self.burnout_meter = burnout_meter
         self.working = working

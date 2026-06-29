@@ -5,6 +5,7 @@
 
 from dataclasses import dataclass, field
 from typing import List
+from ia_engine.triage_engine import TriageEngine
 from simulator import patient
 
 @dataclass
@@ -20,7 +21,12 @@ class Nurse:
         return f"nurse {self.nurse_id} - {self.name} - {self.experience_years} years of experience"
     
     def triage_patient(self, patient):
-        patient.calculate_triage()
+
+        result = TriageEngine.evaluate(patient)
+
+        patient.triage_color = result["color"]
+        patient.max_wait_time = result["wait_time"]
+        patient.triage_reasons = result["reasons"]
 
     def Burnout_in_nurse(self):
 

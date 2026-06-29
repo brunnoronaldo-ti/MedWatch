@@ -5,12 +5,19 @@
 
 class Condition:
 
-    def __init__(self, name, severity, base_recovery_time, contagious=False, treatments=None, 
-                 symptoms=None, triage_color=None, max_wait_time=None, triage_reasons=None):
+    def __init__(self, name, base_recovery_time, contagious=False, treatments=None, 
+        symptoms=None, triage_color=None, max_wait_time=None, triage_reasons=None,
+        priority_map=None):
 
         self.name = name
-        self.severity = severity
-        self.base_recovery_time = base_recovery_time
+        self.priority_map = priority_map or {
+            "red": 5,
+            "orange": 4,
+            "yellow": 3,
+            "green": 2,
+            "blue": 1
+        }
+        self.base_recovery_time =  base_recovery_time
         self.contagious = contagious
         self.treatments = treatments or []
         self.symptoms = symptoms or []
@@ -42,7 +49,7 @@ class Patient:
     def get_most_severe_condition(self):
         if not self.conditions:
             return None
-        return max(self.conditions, key=lambda c: c.severity)
+        return max(self.conditions, key=lambda c: c.priority_map)
     
     def __str__(self):
         return f"Patient {self.patient_id} - {self.name} ({self.age})"

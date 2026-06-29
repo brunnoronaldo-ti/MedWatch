@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-06-19
+# @last updated: 2026-06-29
 # @version: 0.2.0
 
 import random
@@ -8,9 +8,18 @@ import queue
 import heapq
 import itertools
 from datetime import datetime, timedelta
+from simulator import patient, nurse, doctor
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor, DoctorConfig
+
+priority_map = {
+    "red": 5,
+    "orange": 4,
+    "yellow": 3,
+    "green": 2,
+    "blue": 1,
+}
 
 #this class hold all config
 class HospitalConfig:
@@ -52,35 +61,29 @@ class Hospital:
         return False  # Ou define uma lógica secundária de desempate no futuro
 
     def priority_queue(self):
-        queue = []
+        heap = []
+
         for patient in self.config.patients:
-            most_severe = patient.get_most_severe_condition()
-            if most_severe:
-                heapq.heappush(queue, (-most_severe.severity, next(self.config._counter),patient))
-        return queue
-    
+            color = getattr(patient, "triage_color", None)
+            if color is None:
+                condition = patient.get_most_severe_condition()
+                color = getattr(condition, "triage_color", None) if condition else None
+
+            priority = priority_map.get(color, 0)
+            heapq.heappush(
+                heap,
+                (-priority,
+                 next(self.config._counter),
+                 patient)
+            )
+
+        return heap
 
     def tick(self):
-        queue = self.priority_queue()
-    
-        while queue:
-            _, _, patient = heapq.heappop(queue)
+        priority = priority_map.get(patient.triage_color,0)
+        
+        heapq.heappush(queue,(-priority,next(self.config._counter),patient))
 
-            for condition in patient.conditions[:]:
-                    
-                if condition.treated == False:
-                    # Simula o tratamento (aqui você pode adicionar lógica de tratamento real)
-                    # LÓGICA DE PIORA:
-                    # Aumenta a severidade em 0.2 a cada tick para condições não tratadas
-                    condition.severity += 0.2
-                    
-                    if condition.severity > 10:
-                        condition.severity = 10
-                        print(f"  {condition.name} reached CRITICAL state!")
-
-            if not patient.conditions:
-                self.config.discharge_patient(patient.patient_id)
-    
     def deteriorate(self, patient):
         """Gera uma chance de piora clínica ou morte para pacientes não atendidos."""
         roll = random.random()

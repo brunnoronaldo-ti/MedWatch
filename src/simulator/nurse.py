@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-06-19
+# @last updated: 2026-06-29
 # @version: 0.2.0
 
 from dataclasses import dataclass, field

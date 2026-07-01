@@ -40,8 +40,8 @@ def main():
     med_watch.config.assign_doctor(doctor2)
 
     # Create patients with conditions
-    condition1 = Condition("Flu", severity=2, base_recovery_time=7, contagious=True, symptoms=["fever", "cough"])
-    condition2 = Condition("Fracture", severity=4, base_recovery_time=30, contagious=False, symptoms=["pain", "swelling"])
+    condition1 = Condition("Flu", base_recovery_time=7, contagious=True, symptoms=["fever", "cough"], triage_color="yellow")
+    condition2 = Condition("Fracture", base_recovery_time=30, contagious=False, symptoms=["pain", "swelling"], triage_color="orange")
 
     patient1 = Patient(1, "John Doe", 30)
     patient1.add_condition(condition1)

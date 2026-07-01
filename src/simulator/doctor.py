@@ -5,7 +5,7 @@
 
 import random
 from simulator import patient
-from simulator import nurse 
+from simulator import nurse
 
 class DoctorConfig:
     def __init__(self, name,  specialty, doctor_id, experience_years):
@@ -45,9 +45,8 @@ class Doctor:
         self.success_rate = int(self.efficacy * 100)
 
     def calculate_success_rate(self):
-        experience_bonus = (
-            self.config.experience_years ** 0.5
-        ) * 0.02
+        # Apply experience-based bonus to efficacy
+        experience_bonus = (self.config.experience_years ** 0.5) * 0.02
         self.success_rate = int((self.efficacy + experience_bonus) * 100)
         return self.success_rate
 
@@ -64,7 +63,9 @@ class Doctor:
 
         success = random.random()
 
-        if success < self.efficacy:
+        success_rate = self.calculate_success_rate() / 100
+
+        if random.random() < success_rate:
             condition.severity -= 2
 
         else:

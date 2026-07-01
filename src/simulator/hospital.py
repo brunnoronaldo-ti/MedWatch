@@ -8,7 +8,6 @@ import queue
 import heapq
 import itertools
 from datetime import datetime, timedelta
-from simulator import patient, nurse, doctor
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor, DoctorConfig
@@ -80,9 +79,21 @@ class Hospital:
         return heap
 
     def tick(self):
-        priority = priority_map.get(patient.triage_color,0)
-        
-        heapq.heappush(queue,(-priority,next(self.config._counter),patient))
+        heap = self.priority_queue()
+
+        if not heap:
+            print("  No patients to process.")
+            return
+
+        print("  Processing patients by priority:")
+        while heap:
+            _, _, patient = heapq.heappop(heap)
+            triage_color = getattr(patient, "triage_color", None)
+            if triage_color is None:
+                condition = patient.get_most_severe_condition()
+                triage_color = getattr(condition, "triage_color", "unknown") if condition else "unknown"
+
+            print(f"    Patient {patient.patient_id} - {patient.name} | Triage: {triage_color}")
 
     def deteriorate(self, patient):
         """Gera uma chance de piora clínica ou morte para pacientes não atendidos."""

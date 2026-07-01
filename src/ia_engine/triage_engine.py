@@ -54,7 +54,8 @@ class TriageEngine: # Remember: use the results from triage in dashboard in the 
             "reasons": ["Stable patient"]
         }
 
-""" backup of the calculate_triage method from the Patient class, in case we need to revert to it later.
+# backup of the calculate_triage method from the Patient class, in case we need to revert to it later.
+""" 
 
     def calculate_triage(self):
             condition = self.get_most_severe_condition()

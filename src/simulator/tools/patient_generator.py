@@ -30,10 +30,10 @@ female_names = [
 _disease_cache = None
 
 def load_diseases() -> Dict:
-    """
-    Load disease library from JSON file and cache result.
-    Returns dict of disease_name -> disease_attributes.
-    """
+    
+    # Load disease library from JSON file and cache result.
+    # Returns dict of disease_name -> disease_attributes.
+
     global _disease_cache
 
     if _disease_cache is not None:

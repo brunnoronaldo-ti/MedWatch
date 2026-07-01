@@ -15,6 +15,7 @@ from simulator.patient import Patient, Condition
 from simulator.hospital import HospitalConfig, Hospital, SimulationTime
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
+from simulator.tools.patient_generator import generate_patients_batch
 #---------------------------------------------
 
 def main():
@@ -39,19 +40,24 @@ def main():
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
-    # Create patients with conditions
-    condition1 = Condition("Flu", base_recovery_time=7, contagious=True, symptoms=["fever", "cough"], triage_color="yellow")
-    condition2 = Condition("Fracture", base_recovery_time=30, contagious=False, symptoms=["pain", "swelling"], triage_color="orange")
+    """
+    In this part from the code, we create some sample patients and conditions to demonstrate the simulation.
+    In a real-world scenario, patients would be generated dynamically based on various factors. 
+    """
 
-    patient1 = Patient(1, "John Doe", 30)
-    patient1.add_condition(condition1)
+    patients = generate_patients_batch(8, config)
 
-    patient2 = Patient(2, "Jane Smith", 25)
-    patient2.add_condition(condition2)
-
-    # Admit patients to hospital
-    med_watch.config.admit_patient(patient1)
-    med_watch.config.admit_patient(patient2)
+    # Admit patients to hospital.
+    for patient in patients: 
+        med_watch.config.admit_patient(patient)
+    
+    """
+    The end from the patients and conditions creation. Now we will admit the patients to the hospital and start the simulation loop.
+    The simulation loop will run indefinitely, simulating the passage of time and allowing the user
+    to observe the state of the hospital and its patients. The user can press Enter to advance
+    to the next time step, which will simulate a day passing in the hospital.
+    The simulation will print the current state of the hospital, including the number of patients, nurses
+    """
 
     # Print hospital status
     print(med_watch.config)
@@ -82,4 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

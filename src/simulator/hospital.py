@@ -96,7 +96,7 @@ class Hospital:
             print(f"    Patient {patient.patient_id} - {patient.name} | Triage: {triage_color}")
 
     def deteriorate(self, patient):
-        """Gera uma chance de piora clínica ou morte para pacientes não atendidos."""
+        # Gera uma chance de piora clínica ou morte para pacientes não atendidos
         roll = random.random()
 
         # 2% de chance de morte

@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-06-29
 # @last updated: 2026-06-29
-# @version: 0.1.0
+# @version: 0.5.0
 
 # fix here later
 

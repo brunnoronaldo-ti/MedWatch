@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-22
 # @last updated: 2026-06-19
-# @version: 0.2.0
+# @version: 0.5.0
 
 import random
 from simulator import patient

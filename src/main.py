@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
 # @last updated: 2026-06-19
-# @version: 0.4.1
+# @version: 0.5.0
 
 # bin/python3
 # basic bibliotecas

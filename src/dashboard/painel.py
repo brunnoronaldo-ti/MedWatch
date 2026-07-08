@@ -1,3 +1,8 @@
+# @author: Brunno Ronaldo
+# @created: 2026-07-01
+# @last updated: 2026-07-08
+# @version: 0.5.0
+
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table

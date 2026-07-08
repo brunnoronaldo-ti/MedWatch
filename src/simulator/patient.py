@@ -5,9 +5,9 @@
 
 class Condition:
 
-    def __init__(self, name, base_recovery_time, contagious=False, treatments=None, 
+    def __init__(self, name, base_recovery_time, contagious=False, treatments=None,
         symptoms=None, triage_color=None, max_wait_time=None, triage_reasons=None,
-        priority_map=None):
+        priority_map=None, severity=0):
 
         self.name = name
         self.priority_map = priority_map or {
@@ -17,13 +17,14 @@ class Condition:
             "green": 2,
             "blue": 1
         }
-        self.base_recovery_time =  base_recovery_time
+        self.base_recovery_time = base_recovery_time
         self.contagious = contagious
         self.treatments = treatments or []
         self.symptoms = symptoms or []
         self.triage_color = triage_color
         self.max_wait_time = max_wait_time
         self.triage_reasons = triage_reasons or []
+        self.severity = severity
         self.treated = False
 
 class Patient:
@@ -35,6 +36,7 @@ class Patient:
         self.age = age
         self.conditions = conditions or []
 
+        # tranform self.vitals to aleatory
         self.vitals = {
             "heart_rate": 80,
             "oxygen": 98,
@@ -49,7 +51,7 @@ class Patient:
     def get_most_severe_condition(self):
         if not self.conditions:
             return None
-        return max(self.conditions, key=lambda c: c.priority_map)
+        return max(self.conditions, key=lambda c: getattr(c, "severity", 0))
     
     def __str__(self):
         return f"Patient {self.patient_id} - {self.name} ({self.age})"

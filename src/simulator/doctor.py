@@ -20,10 +20,15 @@ class DoctorConfig:
 class Doctor:
     def __init__(self, config: DoctorConfig, burnout_meter=10, working=False, efficacy=1.0):
         self.config = config
+        self.name = config.name
+        self.specialty = config.specialty
+        self.doctor_id = config.doctor_id
+        self.experience_years = config.experience_years
         self.burnout_meter = burnout_meter
         self.working = working
         self.efficacy = efficacy
         self.success_rate = int(self.efficacy * 100)
+        self.status = "ready"
 
     def doctor_burnout(self):
         if self.working:

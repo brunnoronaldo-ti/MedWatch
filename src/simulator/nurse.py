@@ -16,6 +16,7 @@ class Nurse:
     stress_level: int = 0
     patients_attended_today: List[patient.Patient] = field(default_factory=list)
     error_chance: float = 0.05  # Chance base de erro devido ao estresse
+    status: str = "ready"
 
     def __str__(self):
         return f"nurse {self.nurse_id} - {self.name} - {self.experience_years} years of experience"

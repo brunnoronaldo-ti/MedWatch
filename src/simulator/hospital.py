@@ -59,6 +59,20 @@ class Hospital:
     def __lt__(self, other):
         return False  # Ou define uma lógica secundária de desempate no futuro
 
+    def update_hospital_status(self):
+        for patient in list(self.config.patients):
+            if not patient.conditions:
+                continue
+
+            most_severe = patient.get_most_severe_condition()
+            if most_severe is not None:
+                most_severe.severity = max(0, most_severe.severity - 0.5)
+
+        self.config.occupied_beds = len(self.config.patients)
+        self.config.ICU = sum(1 for p in self.config.patients if getattr(p.get_most_severe_condition(), "severity", 0) >= 8)
+        self.config.Ward = sum(1 for p in self.config.patients if 4 <= getattr(p.get_most_severe_condition(), "severity", 0) < 8)
+        self.config.Emergency = sum(1 for p in self.config.patients if getattr(p.get_most_severe_condition(), "severity", 0) < 4)
+
     def priority_queue(self):
         heap = []
 
@@ -93,7 +107,7 @@ class Hospital:
                 condition = patient.get_most_severe_condition()
                 triage_color = getattr(condition, "triage_color", "unknown") if condition else "unknown"
 
-            print(f"    Patient {patient.patient_id} - {patient.name} | Triage: {triage_color}")
+            return(f"    Patient {patient.patient_id} - {patient.name} | Triage: {triage_color}")
 
     def deteriorate(self, patient):
         # Gera uma chance de piora clínica ou morte para pacientes não atendidos
@@ -113,12 +127,13 @@ class Hospital:
 
 class SimulationTime:
     # Atributo de classe (compartilhado)
-    simulated_data = datetime(2026, 1, 1) 
+    simulated_data = datetime(2026, 1, 1)
+
+    @staticmethod
+    def advance_time():
+        SimulationTime.simulated_data += timedelta(days=1)
+        print(f"\n📅 current date: {SimulationTime.simulated_data.strftime('%m/%d/%Y (%A)')}")
 
     @staticmethod
     def next_day():
-        # Acessamos o atributo via NomeDaClasse.variavel
-        print(f"\n📅 current date: {SimulationTime.simulated_data.strftime('%m/%d/%Y (%A)')}")
-        
-        # add day to simulated_data
-        SimulationTime.simulated_data += timedelta(days=1)
+        SimulationTime.advance_time()

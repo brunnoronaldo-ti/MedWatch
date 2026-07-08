@@ -41,7 +41,6 @@ def load_diseases() -> Dict:
 
     disease_file = os.path.join(
         os.path.dirname(__file__),
-        'tools',
         'disease_library.json'
     )
 

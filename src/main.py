@@ -5,20 +5,27 @@
 
 # bin/python3
 # basic bibliotecas
+import sys
 import time
+from pathlib import Path
+
 import colorama
-from colorama import Fore, Back, Style, init
-#--------------------------------------------
+from colorama import Fore, Style, init
+
+ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 # import class from other files
-from simulator.patient import Patient, Condition
+from dashboard.painel import painel_layout
 from simulator.hospital import HospitalConfig, Hospital, SimulationTime
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
 from simulator.tools.patient_generator import generate_patients_batch
-#---------------------------------------------
+# ---------------------------------------------
 
-def main():
+
+def main(max_iterations=None):
     init(autoreset=True)
 
     # Create hospital
@@ -40,51 +47,31 @@ def main():
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
-    """
-    In this part from the code, we create some sample patients and conditions to demonstrate the simulation.
-    In a real-world scenario, patients would be generated dynamically based on various factors. 
-    """
+    generate_patients_batch(8, config)
 
-    patients = generate_patients_batch(8, config)
-
-    # Admit patients to hospital.
-    for patient in patients: 
-        med_watch.config.admit_patient(patient)
-    
-    """
-    The end from the patients and conditions creation. Now we will admit the patients to the hospital and start the simulation loop.
-    The simulation loop will run indefinitely, simulating the passage of time and allowing the user
-    to observe the state of the hospital and its patients. The user can press Enter to advance
-    to the next time step, which will simulate a day passing in the hospital.
-    The simulation will print the current state of the hospital, including the number of patients, nurses
-    """
-
-    # Print hospital status
+    print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
     print(med_watch.config)
 
     first_time = True
+    iteration = 0
     while True:
-
         if first_time:
-            print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
-            print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
-            print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
-            print(f"{Fore.CYAN}this simulation is designed for educational purposes and is not a real medical tool.{Style.RESET_ALL}")
-
+            print(f"{Fore.YELLOW}Starting simulation...{Style.RESET_ALL}")
             first_time = False
-        else:
-            print(f"{Fore.YELLOW}Day {SimulationTime.simulated_data} - Simulation running...{Style.RESET_ALL}")
 
-        time.sleep(1)  # Simulate time passing
+        painel_layout.gerar_interface(med_watch)
+        SimulationTime.advance_time()
+        med_watch.update_hospital_status()
+        print(med_watch.config)
 
-        print(f"{Fore.GREEN}\nCurrent Patients:{Style.RESET_ALL}")
-        med_watch.tick()
+        iteration += 1
+        if max_iterations is not None and iteration >= max_iterations:
+            break
 
-        time.sleep(1)  # Simulate time passing
+        time.sleep(0.1)
 
-        input("\nPress Enter to simulate next time step...")
-        print("\n" + "-"*50)
-        SimulationTime.next_day()
 
 if __name__ == "__main__":
     main()

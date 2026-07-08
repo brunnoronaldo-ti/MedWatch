@@ -16,11 +16,13 @@ class TriageEngine: # Remember: use the results from triage in dashboard in the 
             reasons.append("Low oxygen saturation")
 
             return {
-                "color": "RED",
+                "triage_color": "RED",
                 "wait_time": 0,
                 "reasons": reasons
             }
-
+        
+        #if patient.vitals # 50 < or 100 >
+        
         condition = patient.get_most_severe_condition()
 
         if condition:
@@ -31,26 +33,47 @@ class TriageEngine: # Remember: use the results from triage in dashboard in the 
                 )
 
                 return {
-                    "color": "RED",
+                    "triage_color": "RED",
                     "wait_time": 0,
                     "reasons": reasons
                 }
 
             elif condition.severity >= 7:
-
                 reasons.append(
                     f"Severe condition: {condition.name}"
                 )
 
                 return {
-                    "color": "ORANGE",
+                    "triage_color": "ORANGE",
                     "wait_time": 10,
                     "reasons": reasons
                 }
 
+            elif condition.severity >= 5:
+                reasons.append(
+                    f"Moderate condition: {condition.name}"
+                )
+
+                return {
+                    "triage_color": "YELLOW",
+                    "wait_time": 30,
+                    "reasons": reasons
+                }
+            
+            elif condition.severity >= 3:
+                reasons.append(
+                    f"Mild condition: {condition.name}"
+                )
+
+                return {
+                    "triage_color": "GREEN",
+                    "wait_time": 120,
+                    "reasons": reasons
+                }
+
         return {
-            "color": "GREEN",
-            "wait_time": 120,
+            "triage_color": "BLUE",
+            "wait_time": 240,
             "reasons": ["Stable patient"]
         }
 

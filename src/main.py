@@ -56,6 +56,7 @@ def main(max_iterations=None):
 
     first_time = True
     iteration = 0
+
     while True:
         if first_time:
             print(f"{Fore.YELLOW}Starting simulation...{Style.RESET_ALL}")
@@ -70,8 +71,39 @@ def main(max_iterations=None):
         if max_iterations is not None and iteration >= max_iterations:
             break
 
-        time.sleep(0.1)
+        med_watch.tick()
 
+        time.sleep(1)  # Simulate time passing
+
+        input("\nPress Enter to simulate next time step...")
+        print("\n" + "-"*50)
+        SimulationTime.next_day()
+
+        """
+        first_time = True
+        while True:
+
+        if first_time:
+            print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}this simulation is designed for educational purposes and is not a real medical tool.{Style.RESET_ALL}")
+
+            first_time = False
+        else:
+            print(f"{Fore.YELLOW}Day {SimulationTime.simulated_data} - Simulation running...{Style.RESET_ALL}")
+
+        time.sleep(1)  # Simulate time passing
+
+        print(f"{Fore.GREEN}\nCurrent Patients:{Style.RESET_ALL}")
+        med_watch.tick()
+
+        time.sleep(1)  # Simulate time passing
+
+        input("\nPress Enter to simulate next time step...")
+        print("\n" + "-"*50)
+        SimulationTime.next_day()
+        """
 
 if __name__ == "__main__":
     main()

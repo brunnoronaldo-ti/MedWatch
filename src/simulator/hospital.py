@@ -1,13 +1,12 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-06-29
+# @last updated: 2026-07-10
 # @version: 0.5.0
 
 import random
 import queue
 import heapq
 import itertools
-from datetime import datetime, timedelta
 from simulator.patient import Patient, Condition
 from simulator.nurse import Nurse
 from simulator.doctor import Doctor, DoctorConfig
@@ -124,16 +123,3 @@ class Hospital:
             cond.severity += 1.0
 
         return False
-
-class SimulationTime:
-    # Atributo de classe (compartilhado)
-    simulated_data = datetime(2026, 1, 1)
-
-    @staticmethod
-    def advance_time(): # we acess this method to advance the simulation time by one day with "Name"
-        SimulationTime.simulated_data += timedelta(days=1)
-        print(f"\n📅 current date: {SimulationTime.simulated_data.strftime('%m/%d/%Y (%A)')}")
-
-    @staticmethod
-    def next_day():
-        SimulationTime.advance_time()

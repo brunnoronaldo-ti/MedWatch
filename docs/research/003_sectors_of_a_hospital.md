@@ -24,6 +24,6 @@ Generally, the hospital flow works in this order: the patient arrives at the Eme
 
 ## link to the website read:
 
-- CHOITHRAM MEMORIAL HOSPITAL: https://www.cmhfreetown.com/blogs/icu-vs-general-hospital-ward-key-differences
-- SRI RAMAKRISHNA HOSPITAL: https://www.sriramakrishnahospital.com/blog/icu/emergency-or-icu-how-to-identify-when-intensive-care-is-required/
+- **CHOITHRAM MEMORIAL HOSPITA**: https://www.cmhfreetown.com/blogs/icu-vs-general-hospital-ward-key-differences
+- **SRI RAMAKRISHNA HOSPITAL**: https://www.sriramakrishnahospital.com/blog/icu/emergency-or-icu-how-to-identify-when-intensive-care-is-required/
 

@@ -1,5 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-06-19
+# @last updated: 2026-07-10
 # @version: 0.1.0
 
 import json

@@ -12,7 +12,7 @@ from simulator.hospital import HospitalConfig
 
 # Seed data for names
 male_names = [
-    "John", "Michael", "Robert", "James", "William",
+    "Brunno", "Michael", "Robert", "James", "William",
     "David", "Richard", "Joseph", "Thomas", "Charles",
     "Daniel", "Matthew", "Anthony", "Mark", "Donald",
     "Steven", "Paul", "Andrew", "Joshua", "Kenneth",

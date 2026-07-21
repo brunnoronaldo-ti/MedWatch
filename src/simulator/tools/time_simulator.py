@@ -10,7 +10,7 @@ class SimulationTime:
     simulated_data = datetime(2026, 1, 1)
 
     @staticmethod
-    def advance_time(): # we acess this method to advance the simulation time by one day with "Name"
+    def advance_time(): # we access this method to advance the simulation time by one day with "Name"
         SimulationTime.simulated_data += timedelta(days=1)
         print(f"\n📅 current date: {SimulationTime.simulated_data.strftime('%m/%d/%Y (%A)')}")
 

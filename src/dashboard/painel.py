@@ -11,6 +11,8 @@ from rich.panel import Panel
 from rich.console import Console, Group  # <-- Importamos o Group aqui
 import os  # <-- Importamos para limpar a tela de forma simples
 
+from simulator.tools.time_simulator import SimulationTime
+
 console = Console()
 
 class painel_layout:

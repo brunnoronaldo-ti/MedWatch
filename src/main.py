@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-06-19
+# @last updated: 2026-07-21
 # @version: 0.5.0
 
 # bin/python3
@@ -9,8 +9,6 @@ import sys
 import time
 from pathlib import Path
 
-import colorama
-from colorama import Fore, Style, init
 
 ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
@@ -27,7 +25,6 @@ from simulator.tools.time_simulator import SimulationTime
 
 
 def main(max_iterations=None):
-    init(autoreset=True)
 
     # Create hospital
     config = HospitalConfig("MedWatch", capacity=10, occupied_beds=0, ICU=0, Ward=0, Emergency=0)
@@ -48,11 +45,8 @@ def main(max_iterations=None):
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
-    generate_patients_batch(5, config)
+    generate_patients_batch(10, config)
 
-    print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
     print(med_watch.config)
 
     first_time = True
@@ -60,7 +54,7 @@ def main(max_iterations=None):
 
     while True:
         if first_time:
-            print(f"{Fore.YELLOW}Starting simulation...{Style.RESET_ALL}")
+            print(f"Starting simulation...")
             first_time = False
 
         painel_layout.gerar_interface(med_watch)
@@ -74,7 +68,7 @@ def main(max_iterations=None):
 
         med_watch.tick()
 
-        time.sleep(1)  # Simulate time passing
+        time.sleep(1)  # Simulate time passing 
 
 if __name__ == "__main__":
     main()

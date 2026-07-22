@@ -18,10 +18,11 @@ if str(ROOT) not in sys.path:
 
 # import class from other files
 from dashboard.painel import painel_layout
-from simulator.hospital import HospitalConfig, Hospital, SimulationTime
+from simulator.hospital import HospitalConfig, Hospital
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
 from simulator.tools.patient_generator import generate_patients_batch
+from simulator.tools.time_simulator import SimulationTime
 # ---------------------------------------------
 
 
@@ -47,7 +48,7 @@ def main(max_iterations=None):
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
-    generate_patients_batch(8, config)
+    generate_patients_batch(5, config)
 
     print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
     print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
@@ -74,36 +75,6 @@ def main(max_iterations=None):
         med_watch.tick()
 
         time.sleep(1)  # Simulate time passing
-
-        input("\nPress Enter to simulate next time step...")
-        print("\n" + "-"*50)
-        SimulationTime.next_day()
-
-        """
-        first_time = True
-        while True:
-
-        if first_time:
-            print(f"{Fore.GREEN}welcome to MedWatch - Hospital Simulation{Style.RESET_ALL}")
-            print(f"{Fore.CYAN}This simulation models a hospital environment with patients, nurses, and doctors.{Style.RESET_ALL}")
-            print(f"{Fore.CYAN}You can observe how patients recover over time and interact with medical staff.{Style.RESET_ALL}")
-            print(f"{Fore.CYAN}this simulation is designed for educational purposes and is not a real medical tool.{Style.RESET_ALL}")
-
-            first_time = False
-        else:
-            print(f"{Fore.YELLOW}Day {SimulationTime.simulated_data} - Simulation running...{Style.RESET_ALL}")
-
-        time.sleep(1)  # Simulate time passing
-
-        print(f"{Fore.GREEN}\nCurrent Patients:{Style.RESET_ALL}")
-        med_watch.tick()
-
-        time.sleep(1)  # Simulate time passing
-
-        input("\nPress Enter to simulate next time step...")
-        print("\n" + "-"*50)
-        SimulationTime.next_day()
-        """
 
 if __name__ == "__main__":
     main()

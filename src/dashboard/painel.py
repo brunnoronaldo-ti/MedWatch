@@ -12,6 +12,7 @@ from rich.console import Console, Group  # <-- Importamos o Group aqui
 import os  # <-- Importamos para limpar a tela de forma simples
 
 from simulator.tools.time_simulator import SimulationTime
+from ia_engine.triage_engine import TriageEngine
 
 console = Console()
 
@@ -87,7 +88,7 @@ class painel_layout:
                 Os resultados parciais demonstram que o simulador é funcional, executa a alocação dinâmica de prioridades de forma automatizada e implementa a lógica de organização de prioridades para os profissionais de saúde. Como perspectivas futuras, o projeto prevê o refinamento das variáveis médicas do simulador e a implementação de uma interface digital de cabeceira com síntese facial e de voz integrada a modelos generativos de IA. Conclui-se que o MedWatch demonstra viabilidade técnica na automação da triagem, servindo como base para ferramentas que otimizem fluxos hospitalares críticos e reduzam o burnout na saúde.            
                 
 ----------------------------------------------------------------------------
-                \nMain Menu\n\nAperte Enter para avançar o dia...""",
+                \nMain Menu\n\nAperte Enter para avançar o dia.""",
                 title="Menu",
                 border_style="blue"
             )
@@ -95,4 +96,4 @@ class painel_layout:
 
         # 7. Renderiza o layout atualizado na tela
         console.print(layout)
-        Prompt.ask( default="")
+        Prompt.ask(default="")  # <-- Prompt para avançar o dia

@@ -9,6 +9,9 @@ import sys
 import time
 from pathlib import Path
 
+import ia_engine
+from simulator import hospital
+
 
 ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
@@ -21,13 +24,14 @@ from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
 from simulator.tools.patient_generator import generate_patients_batch
 from simulator.tools.time_simulator import SimulationTime
+from ia_engine.triage_engine import TriageEngine
 # ---------------------------------------------
 
 
 def main(max_iterations=None):
 
     # Create hospital
-    config = HospitalConfig("MedWatch", capacity=10, occupied_beds=0, ICU=0, Ward=0, Emergency=0)
+    config = HospitalConfig("MedWatch", capacity=100, occupied_beds=0, ICU=0, Ward=0, Emergency=0)
     med_watch = Hospital(config)
 
     # Create nurses
@@ -45,7 +49,7 @@ def main(max_iterations=None):
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
-    generate_patients_batch(10, config)
+    generate_patients_batch(100, config)
 
     print(med_watch.config)
 
@@ -59,6 +63,7 @@ def main(max_iterations=None):
 
         painel_layout.gerar_interface(med_watch)
         SimulationTime.advance_time()
+        # <-- Chama a triagem dos pacientes
         med_watch.update_hospital_status()
         print(med_watch.config)
 

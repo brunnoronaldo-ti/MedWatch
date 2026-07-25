@@ -96,4 +96,4 @@ class painel_layout:
 
         # 7. Renderiza o layout atualizado na tela
         console.print(layout)
-        Prompt.ask(default="")  # <-- Prompt para avançar o dia
+        Prompt.ask(default="")   # <-- Prompt para avançar o day

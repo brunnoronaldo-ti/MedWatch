@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-06-19
 # @last updated: 2026-07-21
-# @version: 0.1.0
+# @version: 0.5.1
 
 import json
 import random

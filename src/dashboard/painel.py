@@ -57,7 +57,7 @@ class painel_layout:
         for nurse in hospital.config.nurses:
             table_info_nurse.add_row(nurse.name, str(nurse.stress_level), str(nurse.nurse_id), str(getattr(nurse, "status", "ready")))
 
-        # 4. Texto com as informações gerais do hospital
+        # text with hospital information (all)
         info_hospital_texto = (
             f"Hospital Name: {hospital.config.name}\n"
             f"Capacity: {hospital.config.capacity}\n"

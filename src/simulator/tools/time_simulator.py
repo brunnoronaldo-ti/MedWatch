@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-07-10
 # @last updated: 2026-07-21
-# @version: 0.5.0
+# @version: 0.5.1
 
 from datetime import datetime, timedelta
 

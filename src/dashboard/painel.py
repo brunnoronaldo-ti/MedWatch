@@ -60,11 +60,11 @@ class painel_layout:
         # text with hospital information (all)
         info_hospital_texto = (
             f"Hospital Name: {hospital.config.name}\n"
-            f"Capacity: {hospital.config.capacity}\n"
-            f"Occupied Beds: {hospital.config.occupied_beds}\n"
-            f"ICU Beds: {hospital.config.ICU}\n"
-            f"Ward Beds: {hospital.config.Ward}\n"
-            f"Emergency Beds: {hospital.config.Emergency}"
+            f"Capacity (Capacidade): {hospital.config.capacity}\n"
+            f"Occupied Beds(Camas Ocupadas): {hospital.config.occupied_beds}\n"
+            f"ICU Beds(UTI): {hospital.config.ICU}\n"
+            f"Ward Beds(Enfermaria): {hospital.config.Ward}\n"
+            f"Emergency Beds(Emergência): {hospital.config.Emergency}"
         )
 
         # 5. AGRUPAR TUDO: Juntamos o texto e as tabelas usando o Group

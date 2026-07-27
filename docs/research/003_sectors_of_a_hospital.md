@@ -14,7 +14,7 @@ This file contains explanations of how these hospital departments differ. (Emerg
 
 ### Ward (Enfermaria / Ala de Internação):
 
-- É a unidade padrão de internação para pacientes que necessitam de cuidados contínuos, mas não estão em estado crítico. É onde ficam as camas hospitalares comuns para recuperação e acompanhamento clínico até a alta médica.
+- It is the standard inpatient unit for patients requiring ongoing care who are not in critical condition. This is where standard hospital beds are located for recovery and clinical monitoring until medical discharge.
 
 ## in summary
 
@@ -24,6 +24,5 @@ Generally, the hospital flow works in this order: the patient arrives at the Eme
 
 ## link to the website read:
 
-- **CHOITHRAM MEMORIAL HOSPITA**: https://www.cmhfreetown.com/blogs/icu-vs-general-hospital-ward-key-differences
+- **CHOITHRAM MEMORIAL HOSPITAL**: https://www.cmhfreetown.com/blogs/icu-vs-general-hospital-ward-key-differences
 - **SRI RAMAKRISHNA HOSPITAL**: https://www.sriramakrishnahospital.com/blog/icu/emergency-or-icu-how-to-identify-when-intensive-care-is-required/
-

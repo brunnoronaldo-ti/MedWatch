@@ -49,7 +49,7 @@ def main(max_iterations=None):
     med_watch.config.assign_doctor(doctor1)
     med_watch.config.assign_doctor(doctor2)
 
-    generate_patients_batch(100, config)
+    generate_patients_batch(10, config) # Change the number to increase the total patients in the hospital
 
     print(med_watch.config)
 
@@ -63,7 +63,15 @@ def main(max_iterations=None):
 
         painel_layout.gerar_interface(med_watch)
         SimulationTime.advance_time()
-        # <-- Chama a triagem dos pacientes
+
+        # Realiza a triagem de todos os pacientes gerados antes de iniciar o loop
+        # (Nota: Ajuste 'med_watch.patients' caso a lista de pacientes no objeto Hospital tenha outro nome)
+        if hasattr(med_watch, 'patients'):
+            for patient in med_watch.patients:
+                triage_result = TriageEngine.evaluate(patient)
+                # Salva o resultado da triagem dentro do objeto do paciente
+                patient.triage = triage_result 
+
         med_watch.update_hospital_status()
         print(med_watch.config)
 

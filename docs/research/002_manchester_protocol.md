@@ -34,7 +34,7 @@ The organization should not be merely technical; it involves active listening an
 
 ## links to the websites read
 
-- **tulane**: https://publichealth.tulane.edu/blog/organizational-chart-healthcare/#:~:text=What%20a%20Standard%20Healthcare%20Organizational,functional,%20divisional,%20or%20matrix.
+- **tulane University**: https://publichealth.tulane.edu/blog/organizational-chart-healthcare/#:~:text=What%20a%20Standard%20Healthcare%20Organizational,functional,%20divisional,%20or%20matrix.
 
 - **functionly**: https://www.functionly.com/orginometry/healthcare/organizational-chart#:~:text=For%20instance,%20in%20a%20well,challenges%20to%20this%20rigid%20structure.
 

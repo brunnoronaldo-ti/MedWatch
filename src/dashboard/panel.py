@@ -16,7 +16,7 @@ from ia_engine.triage_engine import TriageEngine
 
 console = Console()
 
-class painel_layout:
+class panel_layout:
     @staticmethod
     def gerar_interface(hospital):
         # 1. Limpa o terminal para evitar a rolagem infinita

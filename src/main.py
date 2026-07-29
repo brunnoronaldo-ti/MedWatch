@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 # import class from other files
-from dashboard.painel import painel_layout
+from dashboard.panel import panel_layout
 from simulator.hospital import HospitalConfig, Hospital
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor

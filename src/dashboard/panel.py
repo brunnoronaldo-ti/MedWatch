@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-07-01
-# @last updated: 2026-07-09
+# @last updated: 2026-07-28
 # @version: 0.5.0
 
 from rich.layout import Layout
@@ -8,8 +8,9 @@ from rich.table import Table
 from rich import box
 from rich.prompt import Prompt
 from rich.panel import Panel
-from rich.console import Console, Group  # <-- Importamos o Group aqui
-import os  # <-- Importamos para limpar a tela de forma simples
+from rich.console import Console, Group  
+
+import os  # <-- simple form to clear the screen/terminal
 
 from simulator.tools.time_simulator import SimulationTime
 from ia_engine.triage_engine import TriageEngine
@@ -19,9 +20,9 @@ console = Console()
 class panel_layout:
     @staticmethod
     def gerar_interface(hospital):
-        # 1. Limpa o terminal para evitar a rolagem infinita
-        # Usa 'cls' para Windows e 'clear' para Linux/Mac
-        os.system('cls' if os.name == 'nt' else 'clear')
+        # 
+        # The windows use 'cls' and Linux/Mac 'clear'
+        os.system('cls' if os.name == 'nt' else 'clear') #`os.system` is used to runs shell terminal commands directly inside python 
 
         # 2. Definir o Layout
         layout = Layout()
@@ -29,9 +30,9 @@ class panel_layout:
             Layout(name="main_menu", ratio=1),
             Layout(name="nerd_stats", ratio=1)
         )
-        group = Group()  # <-- Criamos um grupo para agrupar os elementos do lado direito
+        group = Group()  # <-- I will create a group to cluster the information in the right side of the panel
         
-        # 3. Criar as Tabelas (Pacientes, Médicos, Enfermeiros)
+        # 3. create the tables (patients, doctors, nurses)
         table_info_patient = Table(title="Patient Information", box=box.ROUNDED, style="green", expand=True)
         table_info_patient.add_column("Name", style="bold")
         table_info_patient.add_column("Age", style="bold")
@@ -57,7 +58,7 @@ class panel_layout:
         for nurse in hospital.config.nurses:
             table_info_nurse.add_row(nurse.name, str(nurse.stress_level), str(nurse.nurse_id), str(getattr(nurse, "status", "ready")))
 
-        # text with hospital information (all)
+        # text with hospital information 
         info_hospital_texto = (
             f"Hospital Name: {hospital.config.name}\n"
             f"Capacity (Capacidade): {hospital.config.capacity}\n"
@@ -67,7 +68,7 @@ class panel_layout:
             f"Emergency Beds(Emergência): {hospital.config.Emergency}"
         )
 
-        # 5. AGRUPAR TUDO: Juntamos o texto e as tabelas usando o Group
+        # CLUSTER ALL: We group the text and the tables with `group` 
         conteudo_direito = Group(
             Panel(info_hospital_texto, title="Hospital Stats", border_style="cyan"),
             table_info_patient,
@@ -75,7 +76,7 @@ class panel_layout:
             table_info_nurse
         )
         
-        # 6. Jogamos o grupo completo dentro de um grande painel no lado "nerd_stats"
+        # Left side (nerd_stats)
         layout["nerd_stats"].update(Panel(conteudo_direito, title="Simulation Data", border_style="blue"))
 
         # Lado direito (Menu)

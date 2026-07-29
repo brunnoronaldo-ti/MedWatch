@@ -23,6 +23,6 @@ My goal is to create a "digital layer" of monitoring that filters noise and prov
 
 ## links to the websites read
 
-- **SciELO:** https://www.scielo.br/j/reben/a/9nbqvZDkZCrfgGxMnYPbD7r/?format=html&lang=pt
+- [**SciELO**](https://www.scielo.br/j/reben/a/9nbqvZDkZCrfgGxMnYPbD7r/?format=html&lang=pt)
 
-- **Angel of Hippocrates**: https://angels-of-hippocrates.org/nurse-burnout?gad_source=1&gad_campaignid=22537343895&gclid=CjwKCAjwjtTNBhB0EiwAuswYhp_f8YP7WW9CUm0NiXlNYfmTu8YXaOCCnxawQzUdrJXmj1n56EWBqRoCJI0QAvD_BwE
+- [**Angel of Hippocrates**](https://angels-of-hippocrates.org/nurse-burnout?gad_source=1&gad_campaignid=22537343895&gclid=CjwKCAjwjtTNBhB0EiwAuswYhp_f8YP7WW9CUm0NiXlNYfmTu8YXaOCCnxawQzUdrJXmj1n56EWBqRoCJI0QAvD_BwE)

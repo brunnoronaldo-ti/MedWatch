@@ -34,10 +34,10 @@ The organization should not be merely technical; it involves active listening an
 
 ## links to the websites read
 
-- **tulane University**: https://publichealth.tulane.edu/blog/organizational-chart-healthcare/#:~:text=What%20a%20Standard%20Healthcare%20Organizational,functional,%20divisional,%20or%20matrix.
+- [**tulane University**](https://publichealth.tulane.edu/blog/organizational-chart-healthcare/#:~:text=What%20a%20Standard%20Healthcare%20Organizational,functional,%20divisional,%20or%20matrix)
 
-- **functionly**: https://www.functionly.com/orginometry/healthcare/organizational-chart#:~:text=For%20instance,%20in%20a%20well,challenges%20to%20this%20rigid%20structure.
+- [**functionly**](https://www.functionly.com/orginometry/healthcare/organizational-chart#:~:text=For%20instance,%20in%20a%20well,challenges%20to%20this%20rigid%20structure)
 
-- **HCPF**: https://www.hcpf.com.br/noticias/detalhes/conheca-os-7-protocolos-de-seguranca-do-paciente-do-hcpf#:~:text=S%C3%A3o%20elas:%20a%20identifica%C3%A7%C3%A3o%20do,quedas%20e%20les%C3%B5es%20por%20press%C3%A3o.
+- [**HCPF**](https://www.hcpf.com.br/noticias/detalhes/conheca-os-7-protocolos-de-seguranca-do-paciente-do-hcpf#:~:text=S%C3%A3o%20elas:%20a%20identifica%C3%A7%C3%A3o%20do,quedas%20e%20les%C3%B5es%20por%20press%C3%A3o)
 
-- **HC.FAEMA**: http://hc.famema.br/wp-content/uploads/2022/07/03_ESTRAT%C3%89GIAS_DE_FLUXO_REV_01.pdf
+- [**HC.FAEMA**](http://hc.famema.br/wp-content/uploads/2022/07/03_ESTRAT%C3%89GIAS_DE_FLUXO_REV_01.pdf)

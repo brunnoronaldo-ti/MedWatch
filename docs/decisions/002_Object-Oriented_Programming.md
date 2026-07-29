@@ -4,7 +4,7 @@
 
 This project was developed using the **Object-Oriented Programming (OOP)** paradigm. Unlike structured programming, which focuses on functions and linear flow, OOP organizes software around "objects"—units that combine related data (attributes) and behaviors (methods).
 
-## 2. Why did we choose OOP? (Justification)
+## 2. Why did we choose OOP?
 
 The decision to use **OOP** was based on the following technical benefits for the project:
 

@@ -1,6 +1,6 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
-# @last updated: 2026-07-21
+# @last updated: 2026-07-28
 # @version: 0.5.0
 
 # bin/python3
@@ -8,9 +8,6 @@
 import sys
 import time
 from pathlib import Path
-
-import ia_engine
-from simulator import hospital
 
 
 ROOT = Path(__file__).resolve().parent
@@ -61,11 +58,10 @@ def main(max_iterations=None):
             print(f"Starting simulation...")
             first_time = False
 
-        painel_layout.gerar_interface(med_watch)
+        panel_layout.generate_interface(med_watch)
         SimulationTime.advance_time()
 
         # Realiza a triagem de todos os pacientes gerados antes de iniciar o loop
-        # (Nota: Ajuste 'med_watch.patients' caso a lista de pacientes no objeto Hospital tenha outro nome)
         if hasattr(med_watch, 'patients'):
             for patient in med_watch.patients:
                 triage_result = TriageEngine.evaluate(patient)
@@ -73,7 +69,6 @@ def main(max_iterations=None):
                 patient.triage = triage_result 
 
         med_watch.update_hospital_status()
-        print(med_watch.config)
 
         iteration += 1
         if max_iterations is not None and iteration >= max_iterations:

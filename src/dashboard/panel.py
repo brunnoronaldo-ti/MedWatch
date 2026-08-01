@@ -19,20 +19,21 @@ console = Console()
 
 class panel_layout:
     @staticmethod
-    def gerar_interface(hospital):
-        # 
+    def generate_interface(hospital):
         # The windows use 'cls' and Linux/Mac 'clear'
         os.system('cls' if os.name == 'nt' else 'clear') #`os.system` is used to runs shell terminal commands directly inside python 
 
-        # 2. Definir o Layout
+        # Define the layout 
         layout = Layout()
         layout.split_row(
             Layout(name="main_menu", ratio=1),
             Layout(name="nerd_stats", ratio=1)
         )
+
+        # The Line bellow don't have any effect, but I will keep it for future use
         group = Group()  # <-- I will create a group to cluster the information in the right side of the panel
         
-        # 3. create the tables (patients, doctors, nurses)
+        # create the tables (patients, doctors, nurses)
         table_info_patient = Table(title="Patient Information", box=box.ROUNDED, style="green", expand=True)
         table_info_patient.add_column("Name", style="bold")
         table_info_patient.add_column("Age", style="bold")
@@ -69,7 +70,7 @@ class panel_layout:
         )
 
         # CLUSTER ALL: We group the text and the tables with `group` 
-        conteudo_direito = Group(
+        right_content = Group(
             Panel(info_hospital_texto, title="Hospital Stats", border_style="cyan"),
             table_info_patient,
             table_info_doctor,
@@ -77,9 +78,9 @@ class panel_layout:
         )
         
         # Left side (nerd_stats)
-        layout["nerd_stats"].update(Panel(conteudo_direito, title="Simulation Data", border_style="blue"))
+        layout["nerd_stats"].update(Panel(right_content, title="Simulation Data", border_style="blue"))
 
-        # Lado direito (Menu)
+        # Right Side (Menu)
         layout["main_menu"].update(
             Panel(
                 """ Bem vindo ao MedWatch
@@ -95,6 +96,6 @@ class panel_layout:
             )
         )
 
-        # 7. Renderiza o layout atualizado na tela
-        console.print(layout)
-        Prompt.ask(default="")   # <-- Prompt para avançar o day
+        # Render the layout to the console
+        console.print(layout) 
+        Prompt.ask(default="")# <-- Pause the simulation until the user presses Enter to advance the day

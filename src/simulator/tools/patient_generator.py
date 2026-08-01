@@ -151,8 +151,8 @@ def generate_patient(patient_id: int, num_conditions: Optional[int] = None) -> P
     Returns:
         Patient object with assigned conditions
     """
-    name = generate_random_name()
-    age = generate_age()
+    name = generate_random_name() # Generate a random name
+    age = generate_age() # Generate a random age following hospital distribution
 
     patient = Patient(patient_id, name, age)
 

@@ -32,7 +32,8 @@ class panel_layout:
 
         # The Line bellow don't have any effect, but I will keep it for future use
         group = Group()  # <-- I will create a group to cluster the information in the right side of the panel
-        
+
+    
         # create the tables (patients, doctors, nurses)
         table_info_patient = Table(title="Patient Information", box=box.ROUNDED, style="green", expand=True)
         table_info_patient.add_column("Name", style="bold")
@@ -40,9 +41,18 @@ class panel_layout:
         table_info_patient.add_column("Id", style="bold")
         table_info_patient.add_column("Triage", style="bold")
         for patient in hospital.config.patients:
-            triage = getattr(patient, "triage_color", "-")
-            table_info_patient.add_row(patient.name, str(patient.age), str(patient.patient_id), str(triage))
+            # call the triage engine to evaluate the patient and get the triage color
+            triage_result = TriageEngine.evaluate(patient)             
+            # get the triage color from the result, default to "-" if not available
+            triage_color = triage_result.get("triage_color", "-") if triage_result else "-"
 
+            table_info_patient.add_row(
+                patient.name, 
+                str(patient.age), 
+                str(patient.patient_id), 
+                str(triage_color)
+            )
+            
         table_info_doctor = Table(title="Doctor Information", box=box.ROUNDED, style="red", expand=True)
         table_info_doctor.add_column("Name", style="bold")
         table_info_doctor.add_column("Specialty", style="bold")

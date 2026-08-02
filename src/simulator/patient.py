@@ -36,7 +36,7 @@ class Patient:
         self.age = age
         self.conditions = conditions or []
 
-        # tranform self.vitals to aleatory
+        # transform self.vitals to aleatory
         self.vitals = {
             "heart_rate": 80,
             "oxygen": 98,

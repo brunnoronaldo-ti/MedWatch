@@ -56,6 +56,7 @@ def main(max_iterations=None):
     while True:
         if first_time:
             print(f"Starting simulation...")
+            time.sleep(2)
             first_time = False
 
         panel_layout.generate_interface(med_watch)

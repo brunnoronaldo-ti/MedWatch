@@ -5,6 +5,11 @@
 
 # fix here later
 
+
+
+from matplotlib import tri
+
+
 class TriageEngine: # Remember: use the results from triage in dashboard in the future.
 
     @staticmethod

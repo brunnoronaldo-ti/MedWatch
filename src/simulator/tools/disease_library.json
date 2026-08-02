@@ -63,7 +63,52 @@
                 "mortality_rate": 0.5,
                 "contagious": false,
                 "recovery_time": 180
-            }
+            },
+            "common_cold": {
+                "symptoms": ["runny nose", "sneezing", "sore throat", "cough"],
+                "treatments": ["rest", "hydration", "acetaminophen", "decongestants"],
+                "severity": 1,
+                "especiality": "general medicine",
+                "mortality_rate": 0.0,
+                "contagious": true,
+                "recovery_time": 7
+            },
+            "allergic rhinitis": {
+                "symptoms": ["sneezing", "itchy eyes", "runny nose", "congestion"],
+                "treatments": ["antihistamines", "nasal sprays", "avoiding triggers"],
+                "severity": 2,
+                "especiality": "allergy and immunology",
+                "mortality_rate": 0.0,
+                "contagious": false,
+                "recovery_time": 5
+            },
+            "gastroenteritis": {
+                "symptoms": ["diarrhea", "nausea", "vomiting", "abdominal cramps"],
+                "treatments": ["hydration", "oral rehydration salts", "bland diet"],
+                "severity": 3,
+                "especiality": "gastroenterology",
+                "mortality_rate": 0.001,
+                "contagious": true,
+                "recovery_time": 4
+            },
+            "tension headache": {
+                "symptoms": ["dull head pain", "forehead pressure", "neck tenderness"],
+                "treatments": ["ibuprofen", "aspirin", "rest", "stress management"],
+                "severity": 2,
+                "especiality": "neurology",
+                "mortality_rate": 0.0,
+                "contagious": false,
+                "recovery_time": 1
+            },
+            "conjunctivitis": {
+                "symptoms": ["red eyes", "itchiness", "eye discharge", "tearing"],
+                "treatments": ["antibiotic eye drops", "artificial tears", "warm compress"],
+                "severity": 2,
+                "especiality": "ophthalmology",
+                "mortality_rate": 0.0,
+                "contagious": true,
+                "recovery_time": 6
+            },
         }
     }
 }

@@ -108,7 +108,7 @@
                 "mortality_rate": 0.0,
                 "contagious": true,
                 "recovery_time": 6
-            },
+            }
         }
     }
 }

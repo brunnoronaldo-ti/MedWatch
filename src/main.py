@@ -16,6 +16,7 @@ if str(ROOT) not in sys.path:
 
 # import class from other files
 from dashboard.panel import panel_layout
+from dashboard import main_menu
 from simulator.hospital import HospitalConfig, Hospital
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
@@ -57,6 +58,8 @@ def main(max_iterations=None):
         if first_time:
             print(f"Starting simulation...")
             time.sleep(2)
+            main_menu.interface_menu.mainloop()
+
             first_time = False
 
         panel_layout.generate_interface(med_watch)

@@ -15,8 +15,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 # import class from other files
+from dashboard.main_menu import main_menu_choice_nextwindow
 from dashboard.panel import panel_layout
-from dashboard.main_menu import choose_option_menu, popup_confirmation
 from simulator.hospital import HospitalConfig, Hospital
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
@@ -58,31 +58,36 @@ def main(max_iterations=None):
             print(f"Starting simulation...")
             time.sleep(2)
 
-            dashboard.main_menu.interface_menu.mainloop()
-            # Invoke the menu handler (no button variables expected here)
-            choose_option_menu()    
+            next_window = main_menu_choice_nextwindow()
 
             first_time = False
 
-        panel_layout.generate_interface(med_watch)
-        SimulationTime.advance_time()
-
-        # Realiza a triagem de todos os pacientes gerados antes de iniciar o loop
-        if hasattr(med_watch, 'patients'):
-            for patient in med_watch.patients:
-                triage_result = TriageEngine.evaluate(patient)
-                # Salva o resultado da triagem dentro do objeto do paciente
-                patient.triage = triage_result 
-
-        med_watch.update_hospital_status()
-
-        iteration += 1
-        if max_iterations is not None and iteration >= max_iterations:
+        if next_window == "automatic":
+            while True:
+                panel_layout.generate_interface(med_watch)
+                SimulationTime.advance_time()
+                
+                # Realiza a triagem de todos os pacientes gerados antes de iniciar o loop
+                if hasattr(med_watch, 'patients'):
+                    for patient in med_watch.patients:
+                        triage_result = TriageEngine.evaluate(patient)
+                        # Salva o resultado da triagem dentro do objeto do paciente
+                        patient.triage = triage_result 
+                
+                med_watch.update_hospital_status()
+                
+                iteration += 1
+                if max_iterations is not None and iteration >= max_iterations:
+                    break
+                
+                med_watch.tick()
+                
+                time.sleep(1)  # Simulate time passing
+        else:
+            print("Exiting simulation...")
+            time.sleep(1)
+            print("thank you for using MedWatch!")
             break
-
-        med_watch.tick()
-
-        time.sleep(1)  # Simulate time passing 
 
 if __name__ == "__main__":
     main()

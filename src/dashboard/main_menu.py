@@ -7,43 +7,47 @@ import tkinter as tk
 
 choice = None
 
-def automatic():
-    global choice
-    choice = "automatic"
-    root.destroy()
+def main_menu_choice_nextwindow():
+    global choice, root
+    choice = None
 
-def manual():
-    global choice
-    choice = "manual"
-    root.destroy()
+    def automatic():
+        global choice
+        choice = "automatic"
+        root.destroy()
 
-def exit_program():
-    global choice
-    choice = "exit"
-    root.destroy()
+    def manual():
+        global choice
+        choice = "manual"
+        root.destroy()
 
-root = tk.Tk()
-root.title("MedWatch – Menu Principal")
-root.geometry("500x200")
+    def exit_program():
+        global choice
+        choice = "exit"
+        root.destroy()
 
-tk.Button(
-    root,
-    text="Simulador Automático",
-    command=automatic
-).pack(pady=10)
+    root = tk.Tk()
+    root.title("MedWatch – Menu Principal")
+    root.geometry("500x200")
 
-tk.Button(
-    root,
-    text="Simulador Manual",
-    command=manual
-).pack(pady=10)
+    tk.Button(
+        root,
+        text="Simulador Automático",
+        command=automatic
+    ).pack(pady=10)
 
-tk.Button(
-    root,
-    text="Sair",
-    command=exit_program
-).pack(pady=10)
+    tk.Button(
+        root,
+        text="Simulador Manual",
+        command=manual
+    ).pack(pady=10)
 
-root.mainloop()
+    tk.Button(
+        root,
+        text="Sair",
+        command=exit_program
+    ).pack(pady=10)
 
-print(f"User choice: {choice}")
+    root.mainloop()
+
+    return choice

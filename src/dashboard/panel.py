@@ -12,7 +12,7 @@ from rich.console import Console, Group
 
 import os  # <-- simple form to clear the screen/terminal
 import keyboard  # <-- to capture key presses
-import sys  # <-- to exit the program m
+import sys  # <-- to exit the program
 
 from simulator.tools.time_simulator import SimulationTime
 from ia_engine.triage_engine import TriageEngine

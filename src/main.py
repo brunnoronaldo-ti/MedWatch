@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
 
 # import class from other files
 from dashboard.panel import panel_layout
-from dashboard import main_menu
+from dashboard.main_menu import choose_option_menu, popup_confirmation
 from simulator.hospital import HospitalConfig, Hospital
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
@@ -24,7 +24,6 @@ from simulator.tools.patient_generator import generate_patients_batch
 from simulator.tools.time_simulator import SimulationTime
 from ia_engine.triage_engine import TriageEngine
 # ---------------------------------------------
-
 
 def main(max_iterations=None):
 
@@ -58,7 +57,10 @@ def main(max_iterations=None):
         if first_time:
             print(f"Starting simulation...")
             time.sleep(2)
-            main_menu.interface_menu.mainloop()
+
+            dashboard.main_menu.interface_menu.mainloop()
+            # Invoke the menu handler (no button variables expected here)
+            choose_option_menu()    
 
             first_time = False
 

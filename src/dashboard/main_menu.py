@@ -1,3 +1,8 @@
+# @author: Brunno Ronaldo
+# @created: 2026-08-04
+# @last updated: 2026-08-07
+# @version: 0.5.0
+
 import tkinter as tk
 
 def popup_confirmation():
@@ -26,7 +31,7 @@ def popup_confirmation():
 
     popup.grab_set()
     popup.wait_window()
-    return result["value"]
+    return result["value"] 
 
 def choose_option_menu(button1, button2, button3):
     if button1.cget("relief") == "sunken":

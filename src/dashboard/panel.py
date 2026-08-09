@@ -11,6 +11,8 @@ from rich.panel import Panel
 from rich.console import Console, Group  
 
 import os  # <-- simple form to clear the screen/terminal
+import keyboard  # <-- to capture key presses
+import sys  # <-- to exit the program m
 
 from simulator.tools.time_simulator import SimulationTime
 from ia_engine.triage_engine import TriageEngine
@@ -109,3 +111,13 @@ class panel_layout:
         # Render the layout to the console
         console.print(layout) 
         Prompt.ask(default="")# <-- Pause the simulation until the user presses Enter to advance the day
+
+        # Aguarda uma das duas teclas ser pressionada
+        evento = keyboard.read_event()
+        while evento.event_type != keyboard.KEY_DOWN or evento.name not in ['enter', 'esc']:
+            evento = keyboard.read_event()
+
+        if evento.name == 'esc':
+            console.print("[red]Fechando o programa...[/red]")
+            sys.exit()  # Fecha o programa imediatamente
+    

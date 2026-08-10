@@ -16,6 +16,7 @@ class PatientManualInput:
  
     _disease_cache = None
 
+    @staticmethod
     def load_diseases() -> Dict:
     
         # Load disease library from JSON file and cache result.
@@ -26,7 +27,7 @@ class PatientManualInput:
 
         disease_file = os.path.join(
             os.path.dirname(__file__),
-            'disease_library.json'
+            'tools/disease_library.json'
         )
 
         try:

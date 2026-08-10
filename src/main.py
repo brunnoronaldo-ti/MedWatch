@@ -91,7 +91,7 @@ def main(max_iterations=None):
                 time.sleep(1)  # Simulate time passing
         if next_window == "manual":
             while True:
-                PatientManualScreen.generate_screen(med_watch)
+                PatientManualScreen.generate_screen()
                 med_watch.tick()
         else:
             print("Exiting simulation...")

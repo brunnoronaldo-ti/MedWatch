@@ -1,11 +1,15 @@
 # @author: Brunno Ronaldo
 # @created: 2026-07-01
-# @last updated: 2026-07-28
+# @last updated: 2026-08-09
 # @version: 0.6.0
 
 # main.py (Seu Painel de Controle da Simulação)
-import os
-import time
+
+import os  # <-- simple form to clear the screen/terminal
+import keyboard  # <-- to capture key presses
+import sys  # <-- to exit the program
+import time # <-- to simulate time passing
+
 from rich.align import Align
 from rich.console import Console
 from rich.panel import Panel
@@ -165,8 +169,8 @@ class PatientManualScreen:
                 live.update(generate_layout_func(etapa, status_texto, ficha_paciente_texto, progresso_visual))
                 time.sleep(0.08) # Dá a falsa sensação de cálculo pesado
                 
-            # [AQUI VOCÊ ENCAIXA SUA FUNÇÃO REAL DE TRIAGEM]
-            # Exemplo: resultado_triagem = sua_funcao_de_triagem(paciente)
+            # [AQUI ENCAIXA A FUNÇÃO REAL DE TRIAGEM]
+            
             status_texto = "Triagem concluída! Paciente classificado com sucesso."
             time.sleep(1.5)
 
@@ -182,7 +186,7 @@ class PatientManualScreen:
                 live.update(generate_layout_func(etapa, status_texto, ficha_paciente_texto, progresso_visual))
                 time.sleep(0.08)
                 
-            # [AQUI VOCÊ ENCAIXA SUA LOGICA DE ENFERMEIROS REAL]
+            # [AQUIENCAIXA A LOGICA DE ENFERMEIROS REAL]
             # Exemplo: enfermeiro_trabalhar(paciente)
             status_texto = "Procedimentos de enfermagem finalizados. Encaminhando ao consultório médico."
             time.sleep(1.5)
@@ -199,8 +203,7 @@ class PatientManualScreen:
                 live.update(generate_layout_func(etapa, status_texto, ficha_paciente_texto, progresso_visual))
                 time.sleep(0.1) # Um pouco mais lento porque médico "pensa" mais kkk
                 
-            # [AQUI VOCÊ ENCAIXA SUA LÓGICA DE MÉDICOS REAL]
-            # Exemplo: medico_tratar(paciente)
+            # [AQUI ENCAIXA A LÓGICA DE MÉDICOS REAL]
             status_texto = "Diagnóstico concluído! Prescrição médica carimbada."
             time.sleep(1.5)
 
@@ -218,3 +221,11 @@ class PatientManualScreen:
         
         print("\n")
         console.print(Panel("[bold green]✓ PROCESSO HOSPITALAR CONCLUÍDO![/]\nO prontuário final foi exportado.", expand=False))
+
+        evento = keyboard.read_event()
+        while evento.event_type != keyboard.KEY_DOWN or evento.name not in ['enter', 'esc']:
+            evento = keyboard.read_event()
+        
+        if evento.name == 'esc':
+            console.print("[red]Fechando o programa...[/red]")
+            sys.exit()  # Fecha o programa imediatamente  

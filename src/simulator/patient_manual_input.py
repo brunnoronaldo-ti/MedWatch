@@ -13,7 +13,7 @@ class PatientManualInput:
         self.age = age
         self.patient_id = patient_id
         self.conditions = conditions
-
+ 
     _disease_cache = None
 
     def load_diseases() -> Dict:
@@ -33,7 +33,7 @@ class PatientManualInput:
             with open(disease_file, 'r') as f:
                 data = json.load(f)
                 PatientManualInput._disease_cache = data.get('content', {}).get('disease_library', {})
-                return PatientManualInput. _disease_cache
+                return PatientManualInput._disease_cache
         except FileNotFoundError:
             print(f"Warning: Disease library not found at {disease_file}")
             return {}
@@ -49,12 +49,13 @@ class PatientManualInput:
         patient_manual = []
         while True:
             print("All conditions available in the disease library:")
-            for cond in load_diseases():
+            for cond in PatientManualInput.load_diseases():
                 print(f" - {cond}")
             condition = input("Enter a medical condition (or type 'done' or 'feito' to finish): ")
             if condition.lower() == 'done' or condition.lower() == 'feito':
                 break
-
+            elif condition.lower() in load_diseases():
+                disease_info = load_diseases()[condition.lower()]
             elif condition.lower() not in load_diseases():
                 print(f"Warning: '{condition}' is not in the disease library.")
                 confirm_input_condition = input("Do you want to add it anyway? (yes/no): ").strip().lower()
@@ -66,6 +67,9 @@ class PatientManualInput:
                     severity = input("Enter the severity of the condition (mild/moderate/severe): ").strip().lower()
                     duration = input("Enter the duration of the condition (short-term/long-term): ").strip().lower()
                     description = input("Enter a description of the condition: ").strip()
+                else:
+                    print("Invalid input. Please enter 'yes' or 'no'.")
+                    continue
 
             patient_manual.append({
                 "name": condition,
@@ -74,7 +78,11 @@ class PatientManualInput:
                 "description": description
             })
 
-        return patient_manual
+        return {
+            "name": name,
+            "age": age,
+            "conditions": patient_manual
+        }
 
     def __str__(self):
             return (

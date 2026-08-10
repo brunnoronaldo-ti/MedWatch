@@ -98,7 +98,6 @@ class Hospital:
             print("  No patients to process.")
             return
 
-        print("  Processing patients by priority:")
         while heap:
             _, _, patient = heapq.heappop(heap)
             triage_color = getattr(patient, "triage_color", None)

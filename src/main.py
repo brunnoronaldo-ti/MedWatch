@@ -5,7 +5,7 @@
 
 # bin/python3
 
-# Librarys:
+# Libraries:
 import sys
 import time
 from pathlib import Path
@@ -18,6 +18,7 @@ if str(ROOT) not in sys.path:
 # Layouts:
 from dashboard.main_menu import main_menu_choice_nextwindow
 from dashboard.panel import panel_layout
+from dashboard.patient_manual_screen import PatientManualScreen
 
 # Hospital, Nurse, Doctor, Patient:
 from simulator.hospital import HospitalConfig, Hospital
@@ -88,6 +89,10 @@ def main(max_iterations=None):
                 med_watch.tick()
                 
                 time.sleep(1)  # Simulate time passing
+        if next_window == "manual":
+            while True:
+                PatientManualScreen.generate_screen(med_watch)
+                med_watch.tick()
         else:
             print("Exiting simulation...")
             time.sleep(1)

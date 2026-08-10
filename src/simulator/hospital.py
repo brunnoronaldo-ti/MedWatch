@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-03-15
 # @last updated: 2026-07-10
-# @version: 0.5.0
+# @version: 0.6.0
 
 import random
 import queue

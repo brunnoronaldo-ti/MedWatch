@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-08-07
 # @last updated: 2026-08-09
-# @version: 0.5.0
+# @version: 0.6.0
 
 import json
 import os

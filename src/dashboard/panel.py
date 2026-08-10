@@ -1,7 +1,7 @@
 # @author: Brunno Ronaldo
 # @created: 2026-07-01
-# @last updated: 2026-07-28
-# @version: 0.5.0
+# @last updated: 2026-08-08
+# @version: 0.6.0
 
 from rich.layout import Layout
 from rich.table import Table

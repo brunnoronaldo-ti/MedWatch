@@ -119,5 +119,4 @@ class panel_layout:
 
         if evento.name == 'esc':
             console.print("[red]Fechando o programa...[/red]")
-            sys.exit()  # Fecha o programa imediatamente
-    
+            sys.exit()  # Fecha o programa imediatamente  

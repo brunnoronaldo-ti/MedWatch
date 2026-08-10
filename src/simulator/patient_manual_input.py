@@ -6,7 +6,6 @@
 import json
 import os
 from typing import Dict
-from tools import disease_library 
 
 class PatientManualInput:
     def __init__(self, name, age, patient_id, conditions):
@@ -42,7 +41,7 @@ class PatientManualInput:
             print(f"Warning: Failed to parse disease library JSON")
             return {}
 
-    def patient_details_simple(self):
+    def patient_details_simple(self, load_diseases):
         # User input for patient details
         name = input("Enter patient name: ").capitalize()
         age = int(input("Enter patient age: "))
@@ -50,13 +49,13 @@ class PatientManualInput:
         patient_manual = []
         while True:
             print("All conditions available in the disease library:")
-            for cond in disease_library.load_diseases():
+            for cond in load_diseases():
                 print(f" - {cond}")
             condition = input("Enter a medical condition (or type 'done' or 'feito' to finish): ")
             if condition.lower() == 'done' or condition.lower() == 'feito':
                 break
 
-            elif condition.lower() not in disease_library.load_diseases():
+            elif condition.lower() not in load_diseases():
                 print(f"Warning: '{condition}' is not in the disease library.")
                 confirm_input_condition = input("Do you want to add it anyway? (yes/no): ").strip().lower()
                 if confirm_input_condition == 'no':
@@ -75,7 +74,7 @@ class PatientManualInput:
                 "description": description
             })
 
-            return patient_manual
+        return patient_manual
 
     def __str__(self):
             return (

@@ -47,7 +47,7 @@ class PatientManualInput:
         name = input("Enter patient name: ").capitalize()
         age = int(input("Enter patient age: "))
 
-        conditions = []
+        patient_manual = []
         while True:
             print("All conditions available in the disease library:")
             for cond in disease_library.load_diseases():
@@ -68,12 +68,14 @@ class PatientManualInput:
                     duration = input("Enter the duration of the condition (short-term/long-term): ").strip().lower()
                     description = input("Enter a description of the condition: ").strip()
 
-            conditions.append({
+            patient_manual.append({
                 "name": condition,
                 "severity": severity,
                 "duration": duration,
                 "description": description
             })
+
+            return patient_manual
 
     def __str__(self):
             return (
@@ -82,6 +84,14 @@ class PatientManualInput:
                 f"ID: {self.patient_id}\n"
                 f"Conditions: {self.conditions}"
             )
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "age": self.age,
+            "patient_id": self.patient_id,
+            "conditions": self.conditions
+        }
 
     def save_to_json(self, filename):
         with open(filename, 'w') as f:

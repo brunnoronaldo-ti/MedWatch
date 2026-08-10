@@ -4,7 +4,8 @@
 # @version: 0.5.0
 
 # bin/python3
-# basic bibliotecas
+
+# Librarys:
 import sys
 import time
 from pathlib import Path
@@ -14,12 +15,16 @@ ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-# import class from other files
+# Layouts:
 from dashboard.main_menu import main_menu_choice_nextwindow
 from dashboard.panel import panel_layout
+
+# Hospital, Nurse, Doctor, Patient:
 from simulator.hospital import HospitalConfig, Hospital
 from simulator.nurse import Nurse
 from simulator.doctor import DoctorConfig, Doctor
+
+# Tools:
 from simulator.tools.patient_generator import generate_patients_batch
 from simulator.tools.time_simulator import SimulationTime
 from ia_engine.triage_engine import TriageEngine
@@ -67,11 +72,11 @@ def main(max_iterations=None):
                 panel_layout.generate_interface(med_watch)
                 SimulationTime.advance_time()
                 
-                # Realiza a triagem de todos os pacientes gerados antes de iniciar o loop
+                # Do triage for all patients in the hospital
                 if hasattr(med_watch, 'patients'):
                     for patient in med_watch.patients:
                         triage_result = TriageEngine.evaluate(patient)
-                        # Salva o resultado da triagem dentro do objeto do paciente
+                        # Save the triage result in the patient object
                         patient.triage = triage_result 
                 
                 med_watch.update_hospital_status()

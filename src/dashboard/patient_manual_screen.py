@@ -4,7 +4,10 @@
 # @version: 0.6.0
 
 import os  # <-- simple form to clear the screen/terminal
-import keyboard  # <-- to capture key presses
+try:
+    import keyboard  # <-- to capture key presses (optional)
+except Exception:
+    keyboard = None
 import sys  # <-- to exit the program
 import time # <-- to simulate time passing
 
@@ -57,6 +60,10 @@ class RecordPatientManual:
         patient_input = pmi(name, age, cpf, phone)
         print(f"Patient Input: {patient_input}")
 
+    def run(self):
+        # Start the Tk main loop for this window.
+        self.root.mainloop()
+
 class RecordSymptomsPatient:
     def __init__(self):
         self.root = tk.Tk()
@@ -75,6 +82,9 @@ class RecordSymptomsPatient:
     def submit(self):
         symptom = self.sickness_entry.get()
         print(f"Symptom Input: {symptom}")
+
+    def run(self):
+        self.root.mainloop()
 
 class SimulationParameters:
     def __init__(self):
@@ -96,9 +106,13 @@ class SimulationParameters:
         parameter = self.param_entry.get()
         print(f"Simulation Parameter Input: {parameter}")
 
+    def run(self):
+        self.root.mainloop()
+
 class PatientManualScreen:
     @staticmethod
     def generate_screen():
+        # Create and show the three small windows sequentially.
         patient_record_screen = RecordPatientManual()
         patient_record_screen.run()
 

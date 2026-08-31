@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:
 # Layouts:
 from dashboard.main_menu import main_menu_choice_next_window
 from dashboard.panel import panel_layout
-from dashboard.patient_manual_screen import RecordPatientManual as PatientManualScreen
+from dashboard.patient_manual_screen import PatientManualScreen
 
 # Hospital, Nurse, Doctor, Patient:
 from simulator.hospital import HospitalConfig, Hospital

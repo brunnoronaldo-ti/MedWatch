@@ -7,7 +7,7 @@ import tkinter as tk
 
 choice = None
 
-def main_menu_choice_nextwindow():
+def main_menu_choice_next_window():
     global choice, root
     choice = None
 
@@ -41,6 +41,12 @@ def main_menu_choice_nextwindow():
         text="Simulador Manual",
         command=manual
     ).pack(pady=10)
+
+    tk.Button(
+            root,
+            text="Ajuda",
+            command=manual
+        ).pack(pady=10)
 
     tk.Button(
         root,

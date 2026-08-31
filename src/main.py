@@ -16,9 +16,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 # Layouts:
-from dashboard.main_menu import main_menu_choice_nextwindow
+from dashboard.main_menu import main_menu_choice_next_window
 from dashboard.panel import panel_layout
-from dashboard.patient_manual_screen import PatientManualScreen
+from dashboard.patient_manual_screen import RecordPatientManual as PatientManualScreen
 
 # Hospital, Nurse, Doctor, Patient:
 from simulator.hospital import HospitalConfig, Hospital
@@ -64,7 +64,7 @@ def main(max_iterations=None):
             print(f"Starting simulation...")
             time.sleep(2)
 
-            next_window = main_menu_choice_nextwindow()
+            next_window = main_menu_choice_next_window()
 
             first_time = False
 

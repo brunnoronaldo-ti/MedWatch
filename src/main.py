@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:
 # Layouts:
 from dashboard.main_menu import main_menu_choice_next_window
 from dashboard.panel import panel_layout
-from dashboard.patient_manual_screen import PatientManualScreen
+from dashboard.patient_manual_screen import RegisterPatientScreen
 
 # Hospital, Nurse, Doctor, Patient:
 from simulator.hospital import HospitalConfig, Hospital
@@ -91,8 +91,9 @@ def main(max_iterations=None):
                 time.sleep(1)  # Simulate time passing
         elif next_window == "manual":
             while True:
-                PatientManualScreen.generate_screen()
+                RegisterPatientScreen.generate_screen()
                 med_watch.tick()
+                first_time = True
         else:
             print("Exiting simulation...")
             time.sleep(1)

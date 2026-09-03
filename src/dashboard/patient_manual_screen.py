@@ -13,12 +13,14 @@ import time
 
 import tkinter as tk
 from tkinter import ttk, messagebox
+import typing
 
 from simulator.patient_manual_input import PatientManualInput
 
 
-class PatientManualScreen:
+class RegisterPatientScreen:
     def __init__(self, auto_close=True):
+        print("ABRINDO TELA")
         self.auto_close = auto_close
         self.root = tk.Tk()
         self.root.title("Patient Manual - MedWatch")
@@ -29,7 +31,6 @@ class PatientManualScreen:
 
         self._build_patient_tab()
         self._build_symptoms_tab()
-        self._build_simulation_tab()
 
         # Action buttons
         btn_frame = tk.Frame(self.root)
@@ -42,7 +43,7 @@ class PatientManualScreen:
         self.cancel_btn.pack(side='right', padx=(0,8))
 
         # Storage for resulting PatientManualInput
-        self.result: PatientManualInput | None = None
+        self.result: typing.Optional[PatientManualInput] = None
 
     def _build_patient_tab(self):
         frame = tk.Frame(self.notebook)
@@ -83,20 +84,6 @@ class PatientManualScreen:
         frame.columnconfigure(1, weight=1)
         frame.rowconfigure(1, weight=1)
 
-    def _build_simulation_tab(self):
-        frame = tk.Frame(self.notebook)
-        self.notebook.add(frame, text='Simulation')
-
-        tk.Label(frame, text='Parameter name').grid(row=0, column=0, sticky='w', padx=6, pady=6)
-        self.sim_param_name = tk.StringVar()
-        tk.Entry(frame, textvariable=self.sim_param_name).grid(row=0, column=1, sticky='ew', padx=6, pady=6)
-
-        tk.Label(frame, text='Parameter value').grid(row=1, column=0, sticky='w', padx=6, pady=6)
-        self.sim_param_value = tk.StringVar()
-        tk.Entry(frame, textvariable=self.sim_param_value).grid(row=1, column=1, sticky='ew', padx=6, pady=6)
-
-        frame.columnconfigure(1, weight=1)
-
     def _add_condition(self):
         cond = self.condition_var.get().strip()
         if not cond:
@@ -128,7 +115,7 @@ class PatientManualScreen:
         ok, msg = self._validate()
         if not ok:
             messagebox.showerror('Validation error', msg)
-            return
+            return  
 
         name = self.name_var.get().strip()
         age = int(self.age_var.get().strip())
@@ -157,12 +144,38 @@ class PatientManualScreen:
 
     @staticmethod
     def generate_screen():
-        screen = PatientManualScreen()
+        screen = RegisterPatientScreen()
         screen.run()
         return screen.result
 
+class InfirmaryPatientScreen(RegisterPatientScreen):
+    def __init__(self, auto_close=True):
+        super().__init__(auto_close)
+        self.root.title("Infirmary Patient - MedWatch")
+        # Additional infirmary-specific UI elements can be added 
+        
+    def _on_submit(self):
+        super()._on_submit()
+        # Additional infirmary-specific submission logic can be added here
+
+    def run(self):
+        super().run()
+
+class RegisterInformationScreen(RegisterPatientScreen):
+    def __init__(self, auto_close=True):
+        super().__init__(auto_close)
+        self.root.title("Register Information - MedWatch")
+        # Additional register-specific UI elements can be added 
+        
+    def _on_submit(self):
+        super()._on_submit()
+        # Additional register-specific submission logic can be added here
+
+    def run(self):
+        super().run()
+
+    
 
 if __name__ == '__main__':
-    screen = PatientManualScreen()
-    result = screen.generate_screen()
+    result = RegisterPatientScreen.generate_screen()
     print('Result:', result)
